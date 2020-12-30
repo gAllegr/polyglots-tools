@@ -1,0 +1,13 @@
+/* autoprefixer grid: autoplace */
+
+@import '~bootstrap/scss/bootstrap';
+@import './assets/style/variables';
+
+.gray-linear-gradient {
+  background-image: linear-gradient(45deg, var(--start-grey), transparent);
+}
+
+// Force content to fill the whole height
+.full-viewport {
+  min-height: 100vh;
+}

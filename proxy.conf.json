@@ -1,0 +1,10 @@
+{
+  "/translate-wp/*": {
+    "target": "https://translate.wordpress.org",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+        "^/translate-wp": ""
+    }
+  }
+}

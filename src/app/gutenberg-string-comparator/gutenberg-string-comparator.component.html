@@ -1,0 +1,72 @@
+<div class="row mt-2">
+  <div class="col-12 text-center">
+    <h1>
+      {{ "NAVBAR.MENU.GUTENBERG_STRING_COMPARATOR" | translate }}
+    </h1>
+  </div>
+</div>
+<div class="row mt-2">
+  <!-- Show loader -->
+  <div
+    class="col-12 d-flex align-items-center justify-content-center"
+    *ngIf="busy$ | async"
+  >
+    <div
+      class="spinner-grow spinner-grow-sm text-primary mr-1"
+      role="status"
+    >
+    </div>
+    <span class="text-primary">
+      {{ "GUTENBERG_STRING_COMPARATOR.LOADING" | translate }}
+    </span>
+  </div>
+  <!-- Show error message -->
+  <div class="col-12 text-center" *ngIf="errorMessage$ | async as errorMessage">
+    <p class="text-danger">
+      {{ errorMessage | translate }}
+    </p>
+  </div>
+  <!-- Show results -->
+  <div class="col-12" *ngIf="gutenbergStrings$ | async as strings">
+    <table
+      class="table table-striped table-bordered table-hover table-sm table-responsive"
+    >
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">
+            {{
+              "GUTENBERG_STRING_COMPARATOR.RESULTS.COLUMN_HEADERS.NUMBER"
+                | translate
+            }}
+          </th>
+          <th scope="col">
+            {{
+              "GUTENBERG_STRING_COMPARATOR.RESULTS.COLUMN_HEADERS.ORIGINAL_STRING"
+                | translate
+            }}
+          </th>
+          <th scope="col">
+            {{
+              "GUTENBERG_STRING_COMPARATOR.RESULTS.COLUMN_HEADERS.PLUGIN_STRING"
+                | translate
+            }}
+          </th>
+          <th scope="col">
+            {{
+              "GUTENBERG_STRING_COMPARATOR.RESULTS.COLUMN_HEADERS.WP_CORE_STRING"
+                | translate
+            }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let string of strings; index as number">
+          <th scope="row">{{ number }}</th>
+          <td>{{ string.original }}</td>
+          <td>{{ string.gutenberg }}</td>
+          <td>{{ string.wpCore }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

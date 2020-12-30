@@ -1,0 +1,32 @@
+{
+  "COMMON": {
+    "BUILD": "Build",
+    "CHANGELOG": "Changelog",
+    "VERSION": "Versione"
+  },
+  "GUTENBERG_STRING_COMPARATOR": {
+    "ERRORS": {
+      "CANNOT_GET_PLUGIN_STRINGS": "Non è stato possibile recuperare le stringhe del plugin Gutenberg",
+      "CANNOT_GET_WORDPRESS_STRINGS": "Non è stato possibile recuperare le stringhe del core di WordPress"
+    },
+    "LOADING": "Ricerca delle stringhe in corso",
+    "RESULTS": {
+      "COLUMN_HEADERS": {
+        "NUMBER": "N°",
+        "ORIGINAL_STRING": "Originale",
+        "PLUGIN_STRING": "Gutenberg",
+        "WP_CORE_STRING": "WP Core"
+      }
+    }
+  },
+  "NAVBAR": {
+    "MENU": {
+      "GUTENBERG_STRING_COMPARATOR": "Gutenberg - Comparatore di stringhe"
+    }
+  },
+  "PAGE_NOT_FOUND": {
+    "HEADER": "Ops!",
+    "TEXT": "Qui non c'è nulla, sicuro di aver digitato l'indirizzo corretto?",
+    "CALL_TO_ACTION": "Torna alla pagina iniziale"
+  }
+}

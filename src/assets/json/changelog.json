@@ -1,0 +1,172 @@
+[
+  {
+    "version": "0.1.1",
+    "comments": [
+      {
+        "build": "9",
+        "date": "2020-12-30",
+        "type": "BUGFIX",
+        "text": "Solved CORS errors"
+      },
+      {
+        "build": "9",
+        "date": "2020-12-30",
+        "type": "CONFIG",
+        "text": "Updated package.json with projects informations"
+      },
+      {
+        "build": "9",
+        "date": "2020-12-30",
+        "type": "CONFIG",
+        "text": "Created stage and production Continuous Deployment Github Actions"
+      },
+      {
+        "build": "9",
+        "date": "2020-12-30",
+        "type": "CONFIG",
+        "text": "Setted mirroring from GitLab to GitHub"
+      },
+      {
+        "build": "9",
+        "date": "2020-12-30",
+        "type": "CONFIG",
+        "text": "Setted GitLab repository"
+      },
+      {
+        "build": "9",
+        "date": "2020-12-30",
+        "type": "CONFIG",
+        "text": "Setted GitHub repository"
+      }
+    ]
+  },
+  {
+    "version": "0.1.0",
+    "comments": [
+      {
+        "build": "8",
+        "date": "2020-12-06",
+        "type": "CONFIG",
+        "text": "Setted hosts"
+      },
+      {
+        "build": "8",
+        "date": "2020-12-06",
+        "type": "BUGFIX",
+        "text": "Fixed translation file retrieval"
+      },
+      {
+        "build": "7",
+        "date": "2020-12-05",
+        "type": "CONFIG",
+        "text": "Created Dockerfile"
+      },
+      {
+        "build": "7",
+        "date": "2020-12-05",
+        "type": "CONFIG",
+        "text": "Updated scripts to create builds and local webpack bundle analysis"
+      },
+      {
+        "build": "7",
+        "date": "2020-12-05",
+        "type": "CONFIG",
+        "text": "Added scripts to minify and create cachable translations file"
+      },
+      {
+        "build": "7",
+        "date": "2020-12-05",
+        "type": "CONFIG",
+        "text": "Added nginx server configuration with caching, compression and proxy"
+      },
+      {
+        "build": "7",
+        "date": "2020-12-05",
+        "type": "CONFIG",
+        "text": "Specify assets to deploy on build"
+      },
+      {
+        "build": "6",
+        "date": "2020-11-15",
+        "type": "CONFIG",
+        "text": "Reverted changes for deploy to GitHub pages"
+      },
+      {
+        "build": "5",
+        "date": "2020-11-15",
+        "type": "CONFIG",
+        "text": "Tested automatic deploy to GitHub pages"
+      },
+      {
+        "build": "4",
+        "date": "2020-11-15",
+        "type": "BUGFIX",
+        "text": "Fixed footer position and page visibility"
+      },
+      {
+        "build": "4",
+        "date": "2020-11-15",
+        "type": "FEATURE",
+        "text": "Added content to the Gutenberg string comparator"
+      }
+    ]
+  },
+  {
+    "version": "0.0.1",
+    "comments": [
+      {
+        "build": "3",
+        "date": "2020-11-14",
+        "type": "FEATURE",
+        "text": "Added footer with version number and link to the changelog"
+      },
+      {
+        "build": "3",
+        "date": "2020-11-14",
+        "type": "FEATURE",
+        "text": "Added changelog page"
+      },
+      {
+        "build": "3",
+        "date": "2020-11-14",
+        "type": "FEATURE",
+        "text": "Added 404 page"
+      },
+      {
+        "build": "3",
+        "date": "2020-11-14",
+        "type": "BUGFIX",
+        "text": "Fixed visualization spacing"
+      },
+      {
+        "build": "2",
+        "date": "2020-11-06",
+        "type": "FEATURE",
+        "text": "Added navbar"
+      },
+      {
+        "build": "2",
+        "date": "2020-11-06",
+        "type": "FEATURE",
+        "text": "Created component for Gutenberg string comparator"
+      }
+    ]
+  },
+  {
+    "version": "0.0.0",
+    "comments": [
+      {
+        "build": "1",
+        "date": "2020-11-06",
+        "type": "CONFIG",
+        "text": "Installed and configured tools"
+      },
+      {
+        "build": "0",
+        "date": "2020-11-06",
+        "type": "CONFIG",
+        "text": "Init project"
+      }
+    ]
+  }
+]
