@@ -1,0 +1,20 @@
+# Editor
+.vscode
+# Tools configuration
+.github
+.eslintrc.json
+# Project
+package.json
+package-lock.json
+node_modules
+dist
+build
+docs
+nginx
+# Angular files
+angular.json
+tslint.json
+tsconfig.app.json
+tsconfig.spec.json
+protractor.conf.js
+tsconfig.json
