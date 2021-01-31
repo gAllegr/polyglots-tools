@@ -24,7 +24,7 @@
     "test": "ng test",
     "prettify": "npx prettier --write .",
     "lint": "npm run lint:ts && npm run lint:html && npm run lint:style",
-    "lint:ts": "npx ng lint",
+    "lint:ts": "tsc && npx ng lint",
     "lint:html": "npx linthtml 'src/app/**/*.html'",
     "lint:style": "npx stylelint 'src/**/*.(css|scss)'",
     "docs": "npm run docs:compodoc && npm run docs:bundle-info",
