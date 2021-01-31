@@ -1,14 +1,9 @@
 {
-  "extends": "./node_modules/gts/tsconfig-google.json",
-  "include": [
-    "src/**/*.ts",
-    "test/**/*.ts"
-  ],
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
     "baseUrl": "./",
-    "outDir": "build",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,

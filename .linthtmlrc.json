@@ -82,7 +82,6 @@
   "id-class-no-ad": false,
   "class-no-dup": true,
   "class-style": "dash",
-  "img-req-alt": true,
   "img-req-src": true,
   "html-valid-content-model": true,
   "head-valid-content-model": true,
@@ -105,5 +104,4 @@
   "label-no-enc-textarea-or-select": true,
   "input-btn-req-value-or-title": true,
   "fieldset-contains-legend": true,
-  "button-req-content": true
 }
