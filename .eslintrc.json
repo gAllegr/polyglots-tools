@@ -225,7 +225,6 @@
           "Array",
           "array"
         ],
-        "id-length": ["error", { "min": 2, "max": 40 }],
         "line-comment-position": ["error", { "position": "above" }],
         "max-classes-per-file": ["error", 1],
         "max-depth": ["error", { "max": 4 }],
