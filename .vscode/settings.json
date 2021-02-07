@@ -2,7 +2,6 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "editor.formatOnSave": true,
   "eslint.options": {
     "extensions": [".ts", ".html"]
   },

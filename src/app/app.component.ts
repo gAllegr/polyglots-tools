@@ -5,7 +5,9 @@ import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
-// tslint:disable-next-line: completed-docs
+/**
+ * Main component of the application. Will load the translation file.
+ */
 @Component({
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
@@ -26,10 +28,10 @@ export class AppComponent {
    * (when the files are named like 'it-IT.json') and remotely (when the files are named
    * like 'it-IT-0.4.0-26.json).
    */
-  private loadTranslations() {
-    const translationFile = `assets/i18n/it-IT-${environment.app_version}.json`;
+  private loadTranslations(): void {
+    const TRANSLATION_FILE_PATH = `assets/i18n/it-IT-${environment.app_version}.json`;
     this.http
-      .get<string>(translationFile)
+      .get<string>(TRANSLATION_FILE_PATH)
       .pipe(
         map(() => `it-IT-${environment.app_version}`),
         catchError(() => of('it-IT'))

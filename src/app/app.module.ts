@@ -13,7 +13,18 @@ import { GutenbergStringComparatorComponent } from './gutenberg-string-comparato
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-// tslint:disable-next-line: completed-docs
+/**
+ * Function required by NgxTranslate tool to retrieve translation files.
+ *
+ * @param http The Angular HttpClient service to make HTTP call to translation file folder.
+ */
+export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+/**
+ * Main module of the application.
+ */
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -40,7 +51,3 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ]
 })
 export class AppModule {}
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}

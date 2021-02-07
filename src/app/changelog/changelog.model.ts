@@ -1,13 +1,15 @@
 /**
- * Changelog model
+ * Admitted values for the changelog comment type.
  */
-export interface Changelog {
-  comments: Comment[];
-  version: string;
-}
+export type CommentType =
+  | 'CONFIG'
+  | 'BUGFIX'
+  | 'QUALITY'
+  | 'DOCUMENTATION'
+  | 'FEATURE';
 
 /**
- * Changelog comment model
+ * Changelog comment model.
  */
 export interface Comment {
   build: string;
@@ -17,11 +19,9 @@ export interface Comment {
 }
 
 /**
- * Admitted values for the changelog comment type
+ * Changelog model.
  */
-export type CommentType =
-  | 'CONFIG'
-  | 'BUGFIX'
-  | 'QUALITY'
-  | 'DOCUMENTATION'
-  | 'FEATURE';
+export interface Changelog {
+  comments: Comment[];
+  version: string;
+}

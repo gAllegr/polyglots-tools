@@ -20,7 +20,7 @@ export class NavbarComponent {
   /**
    * Function to toggle the collapsible menu.
    */
-  public toogleMenuCollapse() {
+  public toogleMenuCollapse(): void {
     this.menuCollapsed = !this.menuCollapsed;
   }
 }

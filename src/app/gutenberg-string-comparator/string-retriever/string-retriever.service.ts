@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, throwError, zip } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -12,35 +12,52 @@ import { Translation } from '../models/translation.model';
 @Injectable({
   providedIn: 'root'
 })
-export class StringRetrieverService implements OnDestroy {
+export class StringRetrieverService {
   private readonly _error$ = new Subject<string>();
   private readonly _loading$ = new BehaviorSubject<boolean>(true);
   private readonly _search$ = new Subject<GutenbergTranslationComparison[]>();
 
   constructor(private readonly http: HttpClient) {}
 
-  ngOnDestroy() {
-    console.log('on destroy');
-  }
-
-  get error$() {
+  /**
+   * Get the Observable that keeps track of errors.
+   */
+  public get error$(): Observable<string> {
     return this._error$.asObservable();
   }
-  get loading$() {
+
+  /**
+   * Get the Observable that keeps track of the loading state.
+   */
+  public get loading$(): Observable<boolean> {
     return this._loading$.asObservable();
   }
-  get search$() {
+
+  /**
+   * Get the Observable that keeps track of the search operations.
+   */
+  public get search$(): Observable<GutenbergTranslationComparison[]> {
     return this._search$.asObservable();
   }
 
-  public getStrings() {
-    const gutenbergStrings$ = this.getGutenbergPluginStrings('stable');
-    const wordpressStrings$ = this.getLastWordPressTranslations();
+  /**
+   * Manage the HTTP calls to get strings related to Gutenberg plugin from projects on the Translate platform.
+   */
+  public getStrings(): void {
+    const GUTENBERG_STRINGS$ = this.getGutenbergPluginStrings('stable');
+    const WORDPRESS_STRINGS$ = this.getLastWordPressTranslations();
 
-    zip(gutenbergStrings$, wordpressStrings$)
+    zip(GUTENBERG_STRINGS$, WORDPRESS_STRINGS$)
       .pipe(
         tap(() => this._loading$.next(true)),
-        map(response => this.getCommonStrings(response[0], response[1]))
+        map(response => {
+          const GUTENBERG_STRINGS_INDEX = 0;
+          const WP_CORE_STRINGS_INDEX = 1;
+          return this.getCommonStrings(
+            response[GUTENBERG_STRINGS_INDEX],
+            response[WP_CORE_STRINGS_INDEX]
+          );
+        })
       )
       .subscribe(
         result => this._search$.next(result),
@@ -51,17 +68,18 @@ export class StringRetrieverService implements OnDestroy {
 
   /**
    * Perform the HTTP call to get the Gutenberg plugin strings.
+   *
    * @param project Either 'stable' or 'dev' to get rispectively the last stable version strings
    * or the next upcoming ones.
    */
   private getGutenbergPluginStrings(
     project: 'stable' | 'dev'
   ): Observable<Translation> {
-    const language = 'it';
-    const url = `${environment.hosts.wpTranslate}/projects/wp-plugins/gutenberg/${project}/${language}/default/export-translations/?format=ngx`;
+    const LANGUAGE = 'it';
+    const URL = `${environment.hosts.wpTranslate}/projects/wp-plugins/gutenberg/${project}/${LANGUAGE}/default/export-translations/?format=ngx`;
 
     return this.http
-      .get<Translation>(`${environment.proxy}${url}`)
+      .get<Translation>(`${environment.proxy}${URL}`)
       .pipe(
         catchError(() =>
           throwError(
@@ -77,11 +95,11 @@ export class StringRetrieverService implements OnDestroy {
    * Perform the HTTP call to get the last WordPress Core plugin strings.
    */
   private getLastWordPressTranslations(): Observable<Translation> {
-    const language = 'it';
-    const url = `${environment.hosts.wpTranslate}/projects/wp/dev/${language}/default/export-translations/?format=ngx`;
+    const LANGUAGE = 'it';
+    const URL = `${environment.hosts.wpTranslate}/projects/wp/dev/${LANGUAGE}/default/export-translations/?format=ngx`;
 
     return this.http
-      .get<Translation>(`${environment.proxy}${url}`)
+      .get<Translation>(`${environment.proxy}${URL}`)
       .pipe(
         catchError(() =>
           throwError(
@@ -95,19 +113,22 @@ export class StringRetrieverService implements OnDestroy {
 
   /**
    * Get the strings in common between the retrieved objects.
+   *
    * @param gutenbergStrings Strings obtained from the plugin.
    * @param wpCoreStrings Strings obtained from the WordPress core.
    */
   private getCommonStrings(
     gutenbergStrings: Translation,
     wpCoreStrings: Translation
-  ) {
-    const gutenbergKeys = Object.keys(gutenbergStrings);
-    const wpCoreKeys = Object.keys(wpCoreStrings);
-    const commonKeys = wpCoreKeys.filter(key => gutenbergKeys.includes(key));
+  ): GutenbergTranslationComparison[] {
+    const GUTENBERG_KEYS = Object.keys(gutenbergStrings);
+    const WP_CORE_KEYS = Object.keys(wpCoreStrings);
+    const COMMON_KEYS = WP_CORE_KEYS.filter(key =>
+      GUTENBERG_KEYS.includes(key)
+    );
 
     let comparison: GutenbergTranslationComparison[] = [];
-    commonKeys.forEach(key => {
+    COMMON_KEYS.forEach(key => {
       comparison = [
         ...comparison,
         {

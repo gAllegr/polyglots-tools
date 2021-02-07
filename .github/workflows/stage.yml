@@ -32,7 +32,7 @@ jobs:
         run: npm install
 
       - name: Check code formatting
-        run: npm run prettify-check
+        run: npm run prettify:check
 
       - name: HTML Linting
         run: npm run lint:html

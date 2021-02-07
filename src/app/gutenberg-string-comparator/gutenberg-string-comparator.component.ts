@@ -23,11 +23,15 @@ export class GutenbergStringComparatorComponent implements OnInit {
     this.gutenbergStrings$ = this.stringRetrieverService.search$;
   }
 
+  // eslint-disable-next-line jsdoc/require-jsdoc
   public ngOnInit(): void {
     this.getStrings();
   }
 
-  public getStrings() {
+  /**
+   * Use the {@link StringRetrieverService} to collect strings from WordPress Translate.
+   */
+  public getStrings(): void {
     this.stringRetrieverService.getStrings();
   }
 }
