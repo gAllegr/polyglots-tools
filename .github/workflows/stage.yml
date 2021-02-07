@@ -31,6 +31,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Check code formatting
+        run: npm run prettify-check
+
       - name: TS Linting
         run: npm run lint:ts
 
