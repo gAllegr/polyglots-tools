@@ -103,5 +103,5 @@
   "tag-req-attr": false,
   "label-no-enc-textarea-or-select": true,
   "input-btn-req-value-or-title": true,
-  "fieldset-contains-legend": true,
+  "fieldset-contains-legend": true
 }

@@ -8,9 +8,8 @@ describe('BadgeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BadgeComponent ]
-    })
-    .compileComponents();
+      declarations: [BadgeComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

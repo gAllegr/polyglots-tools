@@ -1,6 +1,6 @@
 <div class="row mt-4">
   <div class="col-12 text-center">
-    <h1>{{ "COMMON.CHANGELOG" | translate }}</h1>
+    <h1>{{ 'COMMON.CHANGELOG' | translate }}</h1>
   </div>
 </div>
 <div class="row">
@@ -10,8 +10,8 @@
       <li *ngFor="let comment of versionRelease.comments">
         <app-badge [text]="comment.type"></app-badge>
         <small>
-          {{ comment.date | date: "dd.MM.yyyy" }}
-          ({{ "COMMON.BUILD" | translate }} {{ comment.build }})
+          {{ comment.date | date: 'dd.MM.yyyy' }}
+          ({{ 'COMMON.BUILD' | translate }} {{ comment.build }})
         </small>
         - {{ comment.text }}
       </li>

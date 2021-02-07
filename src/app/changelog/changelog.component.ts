@@ -27,10 +27,13 @@ export class ChangelogComponent {
     let orderedChangelog: Changelog[] = [];
 
     changelog.forEach(changelogItem => {
-      orderedChangelog = [...orderedChangelog, {
-        comments: changelogItem.comments.reverse(),
-        version: changelogItem.version
-      }];
+      orderedChangelog = [
+        ...orderedChangelog,
+        {
+          comments: changelogItem.comments.reverse(),
+          version: changelogItem.version
+        }
+      ];
     });
 
     return orderedChangelog;

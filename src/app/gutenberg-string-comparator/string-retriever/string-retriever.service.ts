@@ -15,7 +15,7 @@ export class StringRetrieverService {
   private readonly _loading$ = new BehaviorSubject<boolean>(true);
   private readonly _search$ = new Subject<GutenbergTranslationComparison[]>();
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {}
 
   get error$() {
     return this._error$.asObservable();
@@ -114,5 +114,4 @@ export class StringRetrieverService {
 
     return comparison;
   }
-
 }

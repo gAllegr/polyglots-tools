@@ -41,7 +41,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   providers: [StringRetrieverService]
 })
-export class AppModule { }
+export class AppModule {}
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
