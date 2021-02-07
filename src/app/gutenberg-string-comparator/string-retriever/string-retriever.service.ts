@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, throwError, zip } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -9,13 +9,19 @@ import { Translation } from '../models/translation.model';
 /**
  * Perform the HTTP calls to retrieve strings from translate.wordpress.org.
  */
-@Injectable()
-export class StringRetrieverService {
+@Injectable({
+  providedIn: 'root'
+})
+export class StringRetrieverService implements OnDestroy {
   private readonly _error$ = new Subject<string>();
   private readonly _loading$ = new BehaviorSubject<boolean>(true);
   private readonly _search$ = new Subject<GutenbergTranslationComparison[]>();
 
   constructor(private readonly http: HttpClient) {}
+
+  ngOnDestroy() {
+    console.log('on destroy');
+  }
 
   get error$() {
     return this._error$.asObservable();

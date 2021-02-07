@@ -7,6 +7,7 @@ import { StringRetrieverService } from './string-retriever/string-retriever.serv
  * Show the comparison between the Gutemberg string from the plugin and the WordPress core.
  */
 @Component({
+  providers: [StringRetrieverService],
   selector: 'app-gutenberg-string-comparator',
   styleUrls: ['./gutenberg-string-comparator.component.scss'],
   templateUrl: './gutenberg-string-comparator.component.html'

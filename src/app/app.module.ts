@@ -10,7 +10,6 @@ import { BadgeComponent } from './changelog/badge/badge.component';
 import { ChangelogComponent } from './changelog/changelog.component';
 import { FooterComponent } from './footer/footer.component';
 import { GutenbergStringComparatorComponent } from './gutenberg-string-comparator/gutenberg-string-comparator.component';
-import { StringRetrieverService } from './gutenberg-string-comparator/string-retriever/string-retriever.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -38,8 +37,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       }
     }),
     AppRoutingModule
-  ],
-  providers: [StringRetrieverService]
+  ]
 })
 export class AppModule {}
 

@@ -6,7 +6,6 @@
       "extends": ["plugin:@angular-eslint/template/recommended", "prettier"],
       "plugins": ["prettier"],
       "rules": {
-        "prettier/prettier": "error",
         "@angular-eslint/template/accessibility-alt-text": "error",
         "@angular-eslint/template/accessibility-elements-content": "error",
         "@angular-eslint/template/accessibility-label-for": "error",
@@ -32,7 +31,8 @@
         "@angular-eslint/template/no-call-expression": "error",
         "@angular-eslint/template/no-distracting-elements": "error",
         "@angular-eslint/template/no-positive-tabindex": "off",
-        "@angular-eslint/template/use-track-by-function": "off"
+        "@angular-eslint/template/use-track-by-function": "off",
+        "prettier/prettier": "error"
       }
     },
     {
@@ -62,7 +62,6 @@
       ],
       "plugins": ["eslint-plugin-unicorn", "import", "jsdoc", "prettier"],
       "rules": {
-        "prettier/prettier": "error",
         // angular rules
         "@angular-eslint/component-max-inline-declarations": "error",
         "@angular-eslint/component-selector": [
@@ -334,7 +333,9 @@
         "jsdoc/require-returns-type": "off",
         // eslint-plugin-unicorn rules
         "unicorn/filename-case": "error",
-        "unicorn/no-null": "error"
+        "unicorn/no-null": "error",
+        // prettier
+        "prettier/prettier": "error"
       }
     }
   ]
