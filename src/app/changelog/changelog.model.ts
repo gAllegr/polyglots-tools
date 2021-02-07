@@ -1,12 +1,7 @@
 /**
  * Admitted values for the changelog comment type.
  */
-export type CommentType =
-  | 'CONFIG'
-  | 'BUGFIX'
-  | 'QUALITY'
-  | 'DOCUMENTATION'
-  | 'FEATURE';
+export type CommentType = 'CONFIG' | 'BUGFIX' | 'QUALITY' | 'FEATURE';
 
 /**
  * Changelog comment model.

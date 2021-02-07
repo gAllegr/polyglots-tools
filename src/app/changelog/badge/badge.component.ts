@@ -32,11 +32,8 @@ export class BadgeComponent implements OnInit {
       case 'CONFIG':
         this.color = 'badge-secondary';
         break;
-      case 'DOCUMENTATION':
-        this.color = 'badge-info';
-        break;
       case 'QUALITY':
-        this.color = 'badge-warning';
+        this.color = 'badge-info';
         break;
       default:
         this.color = '';
