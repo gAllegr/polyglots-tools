@@ -1,6 +1,6 @@
 {
   "name": "polyglots-tools",
-  "version": "0.1.1-9",
+  "version": "0.1.2-10",
   "author": {
     "email": "allegretta92@hotmail.it",
     "name": "G. Allegretta"
@@ -103,7 +103,6 @@
     "stylelint-scss": "^3.18.0",
     "stylelint-selector-no-empty": "^1.0.7",
     "ts-node": "~8.3.0",
-    "tslint": "~6.1.0",
     "typescript": "~3.8.3",
     "webpack-bundle-analyzer": "^3.9.0"
   }
