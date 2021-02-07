@@ -1,14 +1,5 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*",
-    "src/e2e/**/*",
-    "src/polyfills.ts",
-    "src/index.html",
-    "src/test.ts",
-    "src/main.ts",
-    "src/environments/**/*"
-  ],
   "overrides": [
     {
       "files": ["*.html"],

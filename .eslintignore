@@ -18,3 +18,10 @@ tsconfig.app.json
 tsconfig.spec.json
 protractor.conf.js
 tsconfig.json
+e2e
+src/index.html
+src/main.ts
+src/polyfills.ts
+src/test.ts
+src/environments
+projects
