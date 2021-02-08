@@ -1,0 +1,21 @@
+# Tools configuration
+.github
+# Project
+package.json
+package-lock.json
+node_modules
+dist
+build
+docs
+nginx
+# Angular files
+angular.json
+tsconfig.app.json
+tsconfig.spec.json
+protractor.conf.js
+tsconfig.json
+e2e
+src/index.html
+src/main.ts
+src/polyfills.ts
+src/test.ts

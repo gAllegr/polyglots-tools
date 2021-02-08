@@ -1,12 +1,15 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-prettier"
+  ],
   "plugins": [
     "stylelint-declaration-use-variable",
     "stylelint-selector-no-empty"
   ],
-  "defaultSeverity": "warning",
+  "defaultSeverity": "error",
   "rules": {
-    "declaration-block-semicolon-newline-after": "always",
     "no-empty-source": null,
     "plugin/stylelint-selector-no-empty": true,
     "sh-waqar/declaration-use-variable": ["color", "background-color"]

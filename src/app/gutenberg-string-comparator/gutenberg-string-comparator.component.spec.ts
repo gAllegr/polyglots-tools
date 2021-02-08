@@ -8,9 +8,8 @@ describe('GutenbergStringComparatorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GutenbergStringComparatorComponent ]
-    })
-    .compileComponents();
+      declarations: [GutenbergStringComparatorComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

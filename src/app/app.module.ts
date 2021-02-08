@@ -10,11 +10,21 @@ import { BadgeComponent } from './changelog/badge/badge.component';
 import { ChangelogComponent } from './changelog/changelog.component';
 import { FooterComponent } from './footer/footer.component';
 import { GutenbergStringComparatorComponent } from './gutenberg-string-comparator/gutenberg-string-comparator.component';
-import { StringRetrieverService } from './gutenberg-string-comparator/string-retriever/string-retriever.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-// tslint:disable-next-line: completed-docs
+/**
+ * Function required by NgxTranslate tool to retrieve translation files.
+ *
+ * @param http The Angular HttpClient service to make HTTP call to translation file folder.
+ */
+export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+/**
+ * Main module of the application.
+ */
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -38,11 +48,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       }
     }),
     AppRoutingModule
-  ],
-  providers: [StringRetrieverService]
+  ]
 })
-export class AppModule { }
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
+export class AppModule {}

@@ -31,14 +31,20 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: TS Linting
-        run: npm run lint:ts
+      - name: Check code formatting
+        run: npm run prettify:check
 
       - name: HTML Linting
         run: npm run lint:html
 
       - name: Style Linting
         run: npm run lint:style
+
+      - name: TS Linting
+        run: npm run lint:ts
+
+      - name: TS Compiler Check
+        run: npm run tsc
 
   Docker_build:
     runs-on: ubuntu-latest

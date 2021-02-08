@@ -4,7 +4,7 @@ import { ChangelogComponent } from './changelog/changelog.component';
 import { GutenbergStringComparatorComponent } from './gutenberg-string-comparator/gutenberg-string-comparator.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-const routes: Routes = [
+const ROUTES: Routes = [
   {
     component: GutenbergStringComparatorComponent,
     path: 'gutenberg-string-comparator'
@@ -24,9 +24,11 @@ const routes: Routes = [
   }
 ];
 
-// tslint:disable-next-line: completed-docs
+/**
+ * Main routes of the application.
+ */
 @NgModule({
   exports: [RouterModule],
-  imports: [RouterModule.forRoot(routes)]
+  imports: [RouterModule.forRoot(ROUTES)]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -13,7 +13,15 @@ export class BadgeComponent implements OnInit {
   public color = '';
   @Input() public text: CommentType | undefined;
 
+  // eslint-disable-next-line jsdoc/require-jsdoc
   public ngOnInit(): void {
+    this.setColorBasedOnProvidedText();
+  }
+
+  /**
+   * Set the appropriate color for the changelog line's badge, based on the changelog type.
+   */
+  private setColorBasedOnProvidedText(): void {
     switch (this.text) {
       case 'FEATURE':
         this.color = 'badge-success';
@@ -24,11 +32,8 @@ export class BadgeComponent implements OnInit {
       case 'CONFIG':
         this.color = 'badge-secondary';
         break;
-      case 'DOCUMENTATION':
-        this.color = 'badge-info';
-        break;
       case 'QUALITY':
-        this.color = 'badge-warning';
+        this.color = 'badge-info';
         break;
       default:
         this.color = '';
