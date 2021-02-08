@@ -1,40 +1,40 @@
 [
   {
-    "version":"0.1.2",
-    "comments":[
+    "version": "0.1.2",
+    "comments": [
       {
         "build": "10",
-        "date":"2021-02-07",
+        "date": "2021-02-07",
         "type": "BUGFIX",
         "text": "Fixed loading value state when visiting the Gutenberg comparator page more than once"
       },
       {
         "build": "10",
-        "date":"2021-02-07",
+        "date": "2021-02-07",
         "type": "QUALITY",
         "text": "Improved code quality based on ESLint warnings"
       },
       {
         "build": "10",
-        "date":"2021-02-07",
+        "date": "2021-02-07",
         "type": "QUALITY",
         "text": "Improved code formatting using Prettier"
       },
       {
         "build": "10",
-        "date":"2021-02-07",
+        "date": "2021-02-07",
         "type": "CONFIG",
         "text": "Added Typescript compilator check on CI/CD pipeline"
       },
       {
         "build": "10",
-        "date":"2021-02-07",
+        "date": "2021-02-07",
         "type": "CONFIG",
         "text": "Installed ESLint and setted rules"
       },
       {
         "build": "10",
-        "date":"2021-02-07",
+        "date": "2021-02-07",
         "type": "CONFIG",
         "text": "Installed Prettier"
       }
