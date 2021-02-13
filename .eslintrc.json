@@ -52,7 +52,6 @@
       ],
       "plugins": ["eslint-plugin-unicorn", "import", "jsdoc", "prettier"],
       "rules": {
-        // angular rules
         "@angular-eslint/component-max-inline-declarations": "error",
         "@angular-eslint/component-selector": [
           "error",
@@ -84,7 +83,6 @@
         "@angular-eslint/use-component-view-encapsulation": "error",
         "@angular-eslint/use-injectable-provided-in": "error",
         "@angular-eslint/use-pipe-decorator": "error",
-        // typescript rules
         "@typescript-eslint/array-type": "off",
         "@typescript-eslint/ban-tslint-comment": "error",
         "@typescript-eslint/consistent-type-assertions": "error",
@@ -109,24 +107,20 @@
         "@typescript-eslint/interface-name-prefix": "off",
         "@typescript-eslint/naming-convention": [
           "error",
-          // class, interface, enum
           {
             "selector": ["typeLike"],
             "format": ["StrictPascalCase"]
           },
-          // all variable, functions and properties
           {
             "selector": ["variableLike", "method"],
             "format": ["strictCamelCase"],
             "leadingUnderscore": "allow"
           },
-          // constant variables
           {
             "selector": ["variable", "property"],
             "modifiers": ["const"],
             "format": ["UPPER_CASE"]
           },
-          // private variables are prefixed with underscore
           {
             "selector": ["variableLike"],
             "format": ["strictCamelCase"],
@@ -189,7 +183,6 @@
           }
         ],
         "@typescript-eslint/unified-signatures": "error",
-        // eslint rules
         "accessor-pairs": "error",
         "array-callback-return": "error",
         "arrow-parens": ["error", "as-needed"],
@@ -294,10 +287,8 @@
         "sort-vars": "error",
         "vars-on-top": "error",
         "yoda": "error",
-        // eslint-plugin-import rules
         "import/no-default-export": "error",
         "import/no-unassigned-import": "error",
-        // eslint-plugin-jsdoc rules
         "jsdoc/check-alignment": "error",
         "jsdoc/check-param-names": "error",
         "jsdoc/newline-after-description": "error",
@@ -334,10 +325,8 @@
         "jsdoc/require-returns-check": "off",
         "jsdoc/require-returns-description": "error",
         "jsdoc/require-returns-type": "error",
-        // eslint-plugin-unicorn rules
         "unicorn/filename-case": "error",
         "unicorn/no-null": "error",
-        // prettier
         "prettier/prettier": "error"
       }
     }
