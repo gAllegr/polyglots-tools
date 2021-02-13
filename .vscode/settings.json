@@ -5,7 +5,10 @@
   "less.validate": false,
   "scss.validate": false,
   "eslint.options": {
-    "extensions": [".ts", ".html"]
+    "extensions": [
+      ".ts",
+      ".html"
+    ]
   },
   "eslint.validate": [
     "javascript",

@@ -10,9 +10,9 @@
       },
       {
         "build": "11",
-        "date":"2020-11-13",
-        "type":"CONFIG",
-        "text":"Upgraded Angular version"
+        "date": "2020-11-13",
+        "type": "CONFIG",
+        "text": "Upgraded Angular version"
       },
       {
         "build": "10",

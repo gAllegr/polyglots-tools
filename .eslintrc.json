@@ -2,9 +2,16 @@
   "root": true,
   "overrides": [
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended", "prettier"],
-      "plugins": ["prettier"],
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended",
+        "prettier"
+      ],
+      "plugins": [
+        "prettier"
+      ],
       "rules": {
         "@angular-eslint/template/accessibility-alt-text": "error",
         "@angular-eslint/template/accessibility-elements-content": "error",
@@ -36,10 +43,17 @@
       }
     },
     {
-      "files": ["*.ts"],
-      "excludedFiles": ["**/*.spec.ts"],
+      "files": [
+        "*.ts"
+      ],
+      "excludedFiles": [
+        "**/*.spec.ts"
+      ],
       "parserOptions": {
-        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "project": [
+          "tsconfig.json",
+          "e2e/tsconfig.json"
+        ],
         "createDefaultProgram": true
       },
       "extends": [
@@ -50,7 +64,12 @@
         "plugin:@angular-eslint/template/process-inline-templates",
         "prettier"
       ],
-      "plugins": ["eslint-plugin-unicorn", "import", "jsdoc", "prettier"],
+      "plugins": [
+        "eslint-plugin-unicorn",
+        "import",
+        "jsdoc",
+        "prettier"
+      ],
       "rules": {
         "@angular-eslint/component-max-inline-declarations": "error",
         "@angular-eslint/component-selector": [
@@ -108,23 +127,45 @@
         "@typescript-eslint/naming-convention": [
           "error",
           {
-            "selector": ["typeLike"],
-            "format": ["StrictPascalCase"]
+            "selector": [
+              "typeLike"
+            ],
+            "format": [
+              "StrictPascalCase"
+            ]
           },
           {
-            "selector": ["variableLike", "method"],
-            "format": ["strictCamelCase"],
+            "selector": [
+              "variableLike",
+              "method"
+            ],
+            "format": [
+              "strictCamelCase"
+            ],
             "leadingUnderscore": "allow"
           },
           {
-            "selector": ["variable", "property"],
-            "modifiers": ["const"],
-            "format": ["UPPER_CASE"]
+            "selector": [
+              "variable",
+              "property"
+            ],
+            "modifiers": [
+              "const"
+            ],
+            "format": [
+              "UPPER_CASE"
+            ]
           },
           {
-            "selector": ["variableLike"],
-            "format": ["strictCamelCase"],
-            "modifiers": ["private"],
+            "selector": [
+              "variableLike"
+            ],
+            "format": [
+              "strictCamelCase"
+            ],
+            "modifiers": [
+              "private"
+            ],
             "leadingUnderscore": "require"
           }
         ],
@@ -185,13 +226,22 @@
         "@typescript-eslint/unified-signatures": "error",
         "accessor-pairs": "error",
         "array-callback-return": "error",
-        "arrow-parens": ["error", "as-needed"],
+        "arrow-parens": [
+          "error",
+          "as-needed"
+        ],
         "capitalized-comments": "error",
-        "complexity": ["error", 20],
+        "complexity": [
+          "error",
+          20
+        ],
         "default-case": "error",
         "default-case-last": "error",
         "default-param-last": "error",
-        "eqeqeq": ["error", "always"],
+        "eqeqeq": [
+          "error",
+          "always"
+        ],
         "grouped-accessor-pairs": "error",
         "guard-for-in": "error",
         "id-denylist": [
@@ -208,20 +258,54 @@
           "Array",
           "array"
         ],
-        "line-comment-position": ["error", { "position": "above" }],
-        "max-classes-per-file": ["error", 1],
-        "max-depth": ["error", { "max": 4 }],
+        "line-comment-position": [
+          "error",
+          {
+            "position": "above"
+          }
+        ],
+        "max-classes-per-file": [
+          "error",
+          1
+        ],
+        "max-depth": [
+          "error",
+          {
+            "max": 4
+          }
+        ],
         "max-lines": [
           "error",
-          { "max": 300, "skipBlankLines": true, "skipComments": true }
+          {
+            "max": 300,
+            "skipBlankLines": true,
+            "skipComments": true
+          }
         ],
         "max-lines-per-function": [
           "error",
-          { "max": 50, "skipBlankLines": true, "skipComments": true }
+          {
+            "max": 50,
+            "skipBlankLines": true,
+            "skipComments": true
+          }
         ],
-        "max-nested-callbacks": ["error", { "max": 10 }],
-        "max-params": ["error", { "max": 7 }],
-        "multiline-comment-style": ["error", "starred-block"],
+        "max-nested-callbacks": [
+          "error",
+          {
+            "max": 10
+          }
+        ],
+        "max-params": [
+          "error",
+          {
+            "max": 7
+          }
+        ],
+        "multiline-comment-style": [
+          "error",
+          "starred-block"
+        ],
         "new-parens": "error",
         "no-alert": "error",
         "no-await-in-loop": "error",
@@ -230,14 +314,22 @@
         "no-console": [
           "error",
           {
-            "allow": ["warn", "error"]
+            "allow": [
+              "warn",
+              "error"
+            ]
           }
         ],
         "no-constructor-return": "error",
         "no-continue": "error",
         "no-duplicate-imports": "error",
         "no-empty": "off",
-        "no-else-return": ["error", { "allowElseIf": false }],
+        "no-else-return": [
+          "error",
+          {
+            "allowElseIf": false
+          }
+        ],
         "no-eval": "error",
         "no-extend-native": "error",
         "no-floating-decimal": "error",
@@ -261,10 +353,22 @@
         "no-useless-concat": "error",
         "no-useless-rename": "error",
         "no-useless-return": "error",
-        "no-warning-comments": ["warn", { "terms": ["todo", "!", "?"] }],
+        "no-warning-comments": [
+          "warn",
+          {
+            "terms": [
+              "todo",
+              "!",
+              "?"
+            ]
+          }
+        ],
         "no-void": "error",
         "object-shorthand": "error",
-        "one-var": ["error", "never"],
+        "one-var": [
+          "error",
+          "never"
+        ],
         "prefer-object-spread": "error",
         "prefer-promise-reject-errors": "error",
         "prefer-template": "error",
@@ -275,14 +379,22 @@
             "ignoreCase": true,
             "ignoreDeclarationSort": true,
             "ignoreMemberSort": false,
-            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+            "memberSyntaxSortOrder": [
+              "none",
+              "all",
+              "multiple",
+              "single"
+            ],
             "allowSeparatedGroups": false
           }
         ],
         "sort-keys": [
           "error",
           "asc",
-          { "caseSensitive": true, "natural": true }
+          {
+            "caseSensitive": true,
+            "natural": true
+          }
         ],
         "sort-vars": "error",
         "vars-on-top": "error",
@@ -295,10 +407,16 @@
         "jsdoc/no-bad-blocks": "error",
         "jsdoc/require-description": [
           "error",
-          { "descriptionStyle": "body", "checkConstructors": false }
+          {
+            "descriptionStyle": "body",
+            "checkConstructors": false
+          }
         ],
         "jsdoc/require-description-complete-sentence": "error",
-        "jsdoc/require-hyphen-before-param-description": ["error", "never"],
+        "jsdoc/require-hyphen-before-param-description": [
+          "error",
+          "never"
+        ],
         "jsdoc/require-jsdoc": [
           "error",
           {
