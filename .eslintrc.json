@@ -36,16 +36,6 @@
       }
     },
     {
-      "files": ["**/*spec.ts"],
-      "parser": "@typescript-eslint/parser",
-      "parserOptions": {
-        "ecmaVersion": 2020,
-        "project": ["tsconfig.json", "e2e/tsconfig.json"],
-        "sourceType": "module",
-        "createDefaultProgram": true
-      }
-    },
-    {
       "files": ["*.ts"],
       "excludedFiles": ["**/*.spec.ts"],
       "parserOptions": {
@@ -100,7 +90,12 @@
         "@typescript-eslint/consistent-type-assertions": "error",
         "@typescript-eslint/default-param-last": "error",
         "@typescript-eslint/dot-notation": "error",
-        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/explicit-function-return-type": [
+          "error",
+          {
+            "allowExpressions": true
+          }
+        ],
         "@typescript-eslint/explicit-member-accessibility": [
           "error",
           {
@@ -121,7 +116,7 @@
           },
           // all variable, functions and properties
           {
-            "selector": ["variableLike", "memberLike", "property", "method"],
+            "selector": ["variableLike", "method"],
             "format": ["strictCamelCase"],
             "leadingUnderscore": "allow"
           },
@@ -142,9 +137,17 @@
         "@typescript-eslint/no-confusing-non-null-assertion": "error",
         "@typescript-eslint/no-dupe-class-members": "error",
         "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-floating-promises": "off",
         "@typescript-eslint/no-invalid-this": "error",
         "@typescript-eslint/no-invalid-void-type": "error",
-        "@typescript-eslint/no-magic-numbers": "error",
+        "@typescript-eslint/no-magic-numbers": [
+          "error",
+          {
+            "ignoreEnums": true,
+            "ignoreNumericLiteralTypes": true,
+            "ignoreReadonlyClassProperties": true
+          }
+        ],
         "@typescript-eslint/no-parameter-properties": "off",
         "@typescript-eslint/no-redeclare": "error",
         "@typescript-eslint/no-require-imports": "error",
@@ -152,7 +155,6 @@
         "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/no-throw-literal": "error",
         "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
-        "@typescript-eslint/no-unnecessary-condition": "error",
         "@typescript-eslint/no-unsafe-assignment": "error",
         "@typescript-eslint/no-unused-expressions": "error",
         "@typescript-eslint/no-unused-vars": "error",
@@ -166,7 +168,6 @@
         "@typescript-eslint/prefer-readonly": "error",
         "@typescript-eslint/prefer-reduce-type-parameter": "error",
         "@typescript-eslint/prefer-string-starts-ends-with": "error",
-        "@typescript-eslint/promise-function-async": "error",
         "@typescript-eslint/require-array-sort-compare": "error",
         "@typescript-eslint/restrict-template-expressions": [
           "error",
@@ -192,7 +193,6 @@
         "accessor-pairs": "error",
         "array-callback-return": "error",
         "arrow-parens": ["error", "as-needed"],
-        "camelcase": ["error", { "ignoreImports": true }],
         "capitalized-comments": "error",
         "complexity": ["error", 20],
         "default-case": "error",
@@ -247,7 +247,6 @@
         "no-else-return": ["error", { "allowElseIf": false }],
         "no-eval": "error",
         "no-extend-native": "error",
-        "no-extra-parens": "error",
         "no-floating-decimal": "error",
         "no-iterator": "error",
         "no-lonely-if": "error",
@@ -297,14 +296,12 @@
         "yoda": "error",
         // eslint-plugin-import rules
         "import/no-default-export": "error",
-        "import/no-deprecated": "warn",
         "import/no-unassigned-import": "error",
         // eslint-plugin-jsdoc rules
         "jsdoc/check-alignment": "error",
         "jsdoc/check-param-names": "error",
         "jsdoc/newline-after-description": "error",
         "jsdoc/no-bad-blocks": "error",
-        "jsdoc/no-types": "error",
         "jsdoc/require-description": [
           "error",
           { "descriptionStyle": "body", "checkConstructors": false }
@@ -327,10 +324,16 @@
         "jsdoc/require-param-description": "error",
         "jsdoc/require-param-name": "error",
         "jsdoc/require-param-type": "off",
-        "jsdoc/require-returns": "off",
-        "jsdoc/require-returns-check": "error",
+        "jsdoc/require-returns": [
+          "error",
+          {
+            "forceRequireReturn": true,
+            "forceReturnsWithAsync": true
+          }
+        ],
+        "jsdoc/require-returns-check": "off",
         "jsdoc/require-returns-description": "error",
-        "jsdoc/require-returns-type": "off",
+        "jsdoc/require-returns-type": "error",
         // eslint-plugin-unicorn rules
         "unicorn/filename-case": "error",
         "unicorn/no-null": "error",

@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
  * Function required by NgxTranslate tool to retrieve translation files.
  *
  * @param http The Angular HttpClient service to make HTTP call to translation file folder.
+ * @returns {TranslateHttpLoader} The loader provided by the NgxTranslate tool.
  */
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

@@ -27,6 +27,8 @@ export class AppComponent {
    * The HTTP call ensure to handle the file retrieval both on serving the application locally
    * (when the files are named like 'it-IT.json') and remotely (when the files are named
    * like 'it-IT-0.4.0-26.json).
+   *
+   * @returns {void} Nothing.
    */
   private loadTranslations(): void {
     const TRANSLATION_FILE_PATH = `assets/i18n/it-IT-${environment.app_version}.json`;

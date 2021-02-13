@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, Subject, throwError, zip } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { GutenbergTranslationComparison } from '../models/gutenberg-translation-comparison.model';
-import { Translation } from '../models/translation.model';
+import { TranslationFromWpTranslate } from '../models/translation.model';
 
 /**
  * Perform the HTTP calls to retrieve strings from translate.wordpress.org.
@@ -21,6 +21,8 @@ export class StringRetrieverService {
 
   /**
    * Get the Observable that keeps track of errors.
+   *
+   * @returns {Observable<string>} Get the error observable.
    */
   public get error$(): Observable<string> {
     return this._error$.asObservable();
@@ -28,6 +30,8 @@ export class StringRetrieverService {
 
   /**
    * Get the Observable that keeps track of the loading state.
+   *
+   * @returns {Observable<boolean>} Get the loading observable.
    */
   public get loading$(): Observable<boolean> {
     return this._loading$.asObservable();
@@ -35,6 +39,8 @@ export class StringRetrieverService {
 
   /**
    * Get the Observable that keeps track of the search operations.
+   *
+   * @returns {Observable<GutenbergTranslationComparison[]>} Get the search observable.
    */
   public get search$(): Observable<GutenbergTranslationComparison[]> {
     return this._search$.asObservable();
@@ -42,6 +48,8 @@ export class StringRetrieverService {
 
   /**
    * Manage the HTTP calls to get strings related to Gutenberg plugin from projects on the Translate platform.
+   *
+   * @returns {void} Nothing.
    */
   public getStrings(): void {
     const GUTENBERG_STRINGS$ = this.getGutenbergPluginStrings('stable');
@@ -71,15 +79,16 @@ export class StringRetrieverService {
    *
    * @param project Either 'stable' or 'dev' to get rispectively the last stable version strings
    * or the next upcoming ones.
+   * @returns {Observable<TranslationFromWpTranslate>} The Observable that contains the Gutenberg strings from the plugin.
    */
   private getGutenbergPluginStrings(
     project: 'stable' | 'dev'
-  ): Observable<Translation> {
+  ): Observable<TranslationFromWpTranslate> {
     const LANGUAGE = 'it';
     const URL = `${environment.hosts.wpTranslate}/projects/wp-plugins/gutenberg/${project}/${LANGUAGE}/default/export-translations/?format=ngx`;
 
     return this.http
-      .get<Translation>(`${environment.proxy}${URL}`)
+      .get<TranslationFromWpTranslate>(`${environment.proxy}${URL}`)
       .pipe(
         catchError(() =>
           throwError(
@@ -93,13 +102,15 @@ export class StringRetrieverService {
 
   /**
    * Perform the HTTP call to get the last WordPress Core plugin strings.
+   *
+   * @returns {Observable<TranslationFromWpTranslate>} The Observable that contains the WordPress Core strings.
    */
-  private getLastWordPressTranslations(): Observable<Translation> {
+  private getLastWordPressTranslations(): Observable<TranslationFromWpTranslate> {
     const LANGUAGE = 'it';
     const URL = `${environment.hosts.wpTranslate}/projects/wp/dev/${LANGUAGE}/default/export-translations/?format=ngx`;
 
     return this.http
-      .get<Translation>(`${environment.proxy}${URL}`)
+      .get<TranslationFromWpTranslate>(`${environment.proxy}${URL}`)
       .pipe(
         catchError(() =>
           throwError(
@@ -116,10 +127,11 @@ export class StringRetrieverService {
    *
    * @param gutenbergStrings Strings obtained from the plugin.
    * @param wpCoreStrings Strings obtained from the WordPress core.
+   * @returns {GutenbergTranslationComparison[]} The object that compare Gutenberg strings.
    */
   private getCommonStrings(
-    gutenbergStrings: Translation,
-    wpCoreStrings: Translation
+    gutenbergStrings: TranslationFromWpTranslate,
+    wpCoreStrings: TranslationFromWpTranslate
   ): GutenbergTranslationComparison[] {
     const GUTENBERG_KEYS = Object.keys(gutenbergStrings);
     const WP_CORE_KEYS = Object.keys(wpCoreStrings);

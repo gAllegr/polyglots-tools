@@ -16,6 +16,7 @@ angular.json
 tsconfig.app.json
 tsconfig.spec.json
 protractor.conf.js
+karma.conf.js
 tsconfig.json
 e2e
 src/index.html
@@ -24,3 +25,4 @@ src/polyfills.ts
 src/test.ts
 src/environments
 projects
+*.spec.ts

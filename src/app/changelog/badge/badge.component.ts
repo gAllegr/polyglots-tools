@@ -20,6 +20,8 @@ export class BadgeComponent implements OnInit {
 
   /**
    * Set the appropriate color for the changelog line's badge, based on the changelog type.
+   *
+   * @returns {void} Nothing.
    */
   private setColorBasedOnProvidedText(): void {
     switch (this.text) {
