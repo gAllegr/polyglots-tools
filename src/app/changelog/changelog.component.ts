@@ -27,6 +27,7 @@ export class ChangelogComponent {
    * Given the changelog item, for each version the commit list is reverted to display the oldest commits first.
    *
    * @param changelog The changelog object.
+   * @returns {Changelog[]} The changelog ordered.
    */
   private orderChangelog(changelog: Changelog[]): Changelog[] {
     let orderedChangelog: Changelog[] = [];

@@ -3,6 +3,18 @@
     "version": "0.1.2",
     "comments": [
       {
+        "build": "11",
+        "date": "2021-02-13",
+        "type": "QUALITY",
+        "text": "Improved code quality"
+      },
+      {
+        "build": "11",
+        "date":"2020-11-13",
+        "type":"CONFIG",
+        "text":"Upgraded Angular version"
+      },
+      {
         "build": "10",
         "date": "2021-02-07",
         "type": "BUGFIX",

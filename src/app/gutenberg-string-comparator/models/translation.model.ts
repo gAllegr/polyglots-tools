@@ -1,6 +1,6 @@
 /**
  * Model representing the translation string returned by translate.wordpress.org.
  */
-export interface Translation {
+export interface TranslationFromWpTranslate {
   [index: string]: string;
 }

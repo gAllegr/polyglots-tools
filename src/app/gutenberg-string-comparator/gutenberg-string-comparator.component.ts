@@ -30,6 +30,8 @@ export class GutenbergStringComparatorComponent implements OnInit {
 
   /**
    * Use the {@link StringRetrieverService} to collect strings from WordPress Translate.
+   *
+   * @returns {void} Nothing.
    */
   public getStrings(): void {
     this.stringRetrieverService.getStrings();

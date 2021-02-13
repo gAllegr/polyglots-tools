@@ -19,6 +19,8 @@ export class NavbarComponent {
 
   /**
    * Function to toggle the collapsible menu.
+   *
+   * @returns {void} Nothing.
    */
   public toogleMenuCollapse(): void {
     this.menuCollapsed = !this.menuCollapsed;

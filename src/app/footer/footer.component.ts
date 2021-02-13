@@ -18,6 +18,8 @@ export class FooterComponent {
 
   /**
    * Construct the version to be displayed in the footer.
+   *
+   * @returns {string} The formatted string of the version.
    */
   private getVersion(): string {
     const SPLITTED_DATA = environment.app_version.split('-');
