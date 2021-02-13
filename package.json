@@ -32,7 +32,7 @@
     "docs:compodoc": "compodoc",
     "docs:bundle-info": "webpack-bundle-analyzer dist/polyglots-tools/stats-es2015.json -m static -r docs/bundle-info/index.html",
     "perf:analyze": "npm run build && webpack-bundle-analyzer dist/polyglots-tools/stats-es2015.json",
-    "perf:analyze-prod": "npm run build:prod && webpack-bundle-analyzer dist/polyglots-tools/stats-es2015.json",
+    "perf:analyze-prod": "npm run build:prod && webpack-bundle-analyzer dist/polyglots-tools/stats.json",
     "e2e": "ng e2e",
     "version": "echo $npm_package_version"
   },
