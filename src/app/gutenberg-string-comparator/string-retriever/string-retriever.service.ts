@@ -1,23 +1,25 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, throwError, zip } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { TranslateWpRoutesService } from 'src/app/services/translate-wp-routes/translate-wp-routes.service';
 import { GutenbergTranslationComparison } from '../models/gutenberg-translation-comparison.model';
-import { TranslationFromWpTranslate } from '../models/translation.model';
+import { TranslationFromWpTranslate } from '../models/translation-from-wp.model';
 
 /**
  * Perform the HTTP calls to retrieve strings from translate.wordpress.org.
  */
 @Injectable({
-  providedIn: 'root'
+  // eslint-disable-next-line unicorn/no-null
+  providedIn: null
 })
 export class StringRetrieverService {
   private readonly _error$ = new Subject<string>();
   private readonly _loading$ = new BehaviorSubject<boolean>(true);
   private readonly _search$ = new Subject<GutenbergTranslationComparison[]>();
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(
+    private readonly translateWpRoutesService: TranslateWpRoutesService
+  ) {}
 
   /**
    * Get the Observable that keeps track of errors.
@@ -52,7 +54,7 @@ export class StringRetrieverService {
    * @returns {void} Nothing.
    */
   public getStrings(): void {
-    const GUTENBERG_STRINGS$ = this.getGutenbergPluginStrings('stable');
+    const GUTENBERG_STRINGS$ = this.getGutenbergPluginStrings();
     const WORDPRESS_STRINGS$ = this.getLastWordPressTranslations();
 
     zip(GUTENBERG_STRINGS$, WORDPRESS_STRINGS$)
@@ -77,18 +79,11 @@ export class StringRetrieverService {
   /**
    * Perform the HTTP call to get the Gutenberg plugin strings.
    *
-   * @param project Either 'stable' or 'dev' to get rispectively the last stable version strings
-   * or the next upcoming ones.
    * @returns {Observable<TranslationFromWpTranslate>} The Observable that contains the Gutenberg strings from the plugin.
    */
-  private getGutenbergPluginStrings(
-    project: 'stable' | 'dev'
-  ): Observable<TranslationFromWpTranslate> {
-    const LANGUAGE = 'it';
-    const URL = `${environment.hosts.wpTranslate}/projects/wp-plugins/gutenberg/${project}/${LANGUAGE}/default/export-translations/?format=ngx`;
-
-    return this.http
-      .get<TranslationFromWpTranslate>(`${environment.proxy}${URL}`)
+  private getGutenbergPluginStrings(): Observable<TranslationFromWpTranslate> {
+    return this.translateWpRoutesService
+      .getPluginStrings('gutenberg')
       .pipe(
         catchError(() =>
           throwError(
@@ -106,11 +101,8 @@ export class StringRetrieverService {
    * @returns {Observable<TranslationFromWpTranslate>} The Observable that contains the WordPress Core strings.
    */
   private getLastWordPressTranslations(): Observable<TranslationFromWpTranslate> {
-    const LANGUAGE = 'it';
-    const URL = `${environment.hosts.wpTranslate}/projects/wp/dev/${LANGUAGE}/default/export-translations/?format=ngx`;
-
-    return this.http
-      .get<TranslationFromWpTranslate>(`${environment.proxy}${URL}`)
+    return this.translateWpRoutesService
+      .getLastWordPressTranslations()
       .pipe(
         catchError(() =>
           throwError(
