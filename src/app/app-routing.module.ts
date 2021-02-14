@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GutenbergStringComparatorComponent } from './gutenberg-string-comparator/gutenberg-string-comparator.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './template/page-not-found/page-not-found.component';
 
 const ROUTES: Routes = [
   {
-    component: GutenbergStringComparatorComponent,
+    loadChildren: () =>
+      import(
+        './gutenberg-string-comparator/gutenberg-string-comparator.module'
+      ).then(m => m.GutenbergStringComparatorModule),
     path: 'gutenberg-string-comparator'
   },
   {
