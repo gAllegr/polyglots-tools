@@ -6,8 +6,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BadgeComponent } from './changelog/badge/badge.component';
-import { ChangelogComponent } from './changelog/changelog.component';
 import { FooterComponent } from './footer/footer.component';
 import { GutenbergStringComparatorComponent } from './gutenberg-string-comparator/gutenberg-string-comparator.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -33,9 +31,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     NavbarComponent,
     GutenbergStringComparatorComponent,
     PageNotFoundComponent,
-    FooterComponent,
-    ChangelogComponent,
-    BadgeComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
