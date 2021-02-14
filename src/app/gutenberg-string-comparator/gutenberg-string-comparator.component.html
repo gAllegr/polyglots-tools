@@ -56,14 +56,24 @@
                 | translate
             }}
           </th>
+          <th scope="col">
+            {{
+              'GUTENBERG_STRING_COMPARATOR.RESULTS.COLUMN_HEADERS.WP_CORE_PROJECT'
+                | translate
+            }}
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let string of strings; index as number">
+        <tr
+          *ngFor="let string of strings; index as number"
+          [ngClass]="string.areEqual ? 'bg-success' : 'bg-warning'"
+        >
           <th scope="row">{{ number }}</th>
           <td>{{ string.original }}</td>
           <td>{{ string.gutenberg }}</td>
           <td>{{ string.wpCore }}</td>
+          <td>{{ string.wpCoreProject | translate }}</td>
         </tr>
       </tbody>
     </table>

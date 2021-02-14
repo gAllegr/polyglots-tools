@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, throwError, zip } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { TranslateWpRoutesService } from 'src/app/services/translate-wp-routes/translate-wp-routes.service';
-import { GutenbergTranslationComparison } from '../models/gutenberg-translation-comparison.model';
-import { TranslationFromWpTranslate } from '../models/translation-from-wp.model';
+import { WordPressSubProject } from 'src/app/gutenberg-string-comparator/models/wp-translate-projects.type';
+import { TranslateWpRoutesService } from 'src/app/gutenberg-string-comparator/services/translate-wp-routes/translate-wp-routes.service';
+import { GutenbergTranslationComparison } from '../../models/gutenberg-translation-comparison.model';
+import { TranslationFromWpTranslate } from '../../models/translation-from-wp-translate.model';
+import { WpCoreNameProjectMapperService } from '../wp-core-name-project-mapper/wp-core-name-project-mapper.service';
 
 /**
  * Perform the HTTP calls to retrieve strings from translate.wordpress.org.
@@ -18,7 +20,8 @@ export class StringRetrieverService {
   private readonly _search$ = new Subject<GutenbergTranslationComparison[]>();
 
   constructor(
-    private readonly translateWpRoutesService: TranslateWpRoutesService
+    private readonly translateWpRoutesService: TranslateWpRoutesService,
+    private readonly wpCoreNameProjectMapper: WpCoreNameProjectMapperService
   ) {}
 
   /**
@@ -54,19 +57,45 @@ export class StringRetrieverService {
    * @returns {void} Nothing.
    */
   public getStrings(): void {
-    const GUTENBERG_STRINGS$ = this.getGutenbergPluginStrings();
-    const WORDPRESS_STRINGS$ = this.getLastWordPressTranslations();
-
-    zip(GUTENBERG_STRINGS$, WORDPRESS_STRINGS$)
+    zip(
+      this.getGutenbergPluginStrings(),
+      this.getLastWordPressTranslations(),
+      this.getLastWordPressTranslations('/admin/'),
+      this.getLastWordPressTranslations('/admin/network/'),
+      this.getLastWordPressTranslations('/cc/')
+    )
       .pipe(
         tap(() => this._loading$.next(true)),
         map(response => {
-          const GUTENBERG_STRINGS_INDEX = 0;
-          const WP_CORE_STRINGS_INDEX = 1;
-          return this.getCommonStrings(
-            response[GUTENBERG_STRINGS_INDEX],
-            response[WP_CORE_STRINGS_INDEX]
-          );
+          const [
+            GUTENBERG_STRINGS,
+            WP_CORE_STRINGS,
+            WP_CORE_ADMIN_STRINGS,
+            WP_CORE_NETWORK_STRINGS,
+            WP_CORE_CC_STRINGS
+          ] = [...response];
+          return [
+            ...this.createComparisonObject(
+              GUTENBERG_STRINGS,
+              WP_CORE_STRINGS,
+              '/'
+            ),
+            ...this.createComparisonObject(
+              GUTENBERG_STRINGS,
+              WP_CORE_ADMIN_STRINGS,
+              '/admin/'
+            ),
+            ...this.createComparisonObject(
+              GUTENBERG_STRINGS,
+              WP_CORE_NETWORK_STRINGS,
+              '/admin/network/'
+            ),
+            ...this.createComparisonObject(
+              GUTENBERG_STRINGS,
+              WP_CORE_CC_STRINGS,
+              '/cc/'
+            )
+          ];
         })
       )
       .subscribe(
@@ -100,9 +129,11 @@ export class StringRetrieverService {
    *
    * @returns {Observable<TranslationFromWpTranslate>} The Observable that contains the WordPress Core strings.
    */
-  private getLastWordPressTranslations(): Observable<TranslationFromWpTranslate> {
+  private getLastWordPressTranslations(
+    subproject: WordPressSubProject = '/'
+  ): Observable<TranslationFromWpTranslate> {
     return this.translateWpRoutesService
-      .getLastWordPressTranslations()
+      .getLastWordPressTranslations(subproject)
       .pipe(
         catchError(() =>
           throwError(
@@ -115,30 +146,32 @@ export class StringRetrieverService {
   }
 
   /**
-   * Get the strings in common between the retrieved objects.
+   * Compare keys from Gutenberg strings with keys from a WordPress core subproject to find strings in common.
    *
-   * @param gutenbergStrings Strings obtained from the plugin.
-   * @param wpCoreStrings Strings obtained from the WordPress core.
+   * @param gutenbergStrings Translation of the Gutenberg plugin.
+   * @param wpCoreStrings Translations of a WordPress core subproject.
    * @returns {GutenbergTranslationComparison[]} The object that compare Gutenberg strings.
    */
-  private getCommonStrings(
+  private createComparisonObject(
     gutenbergStrings: TranslationFromWpTranslate,
-    wpCoreStrings: TranslationFromWpTranslate
+    wpCoreStrings: TranslationFromWpTranslate,
+    wpSubproject: WordPressSubProject
   ): GutenbergTranslationComparison[] {
     const GUTENBERG_KEYS = Object.keys(gutenbergStrings);
     const WP_CORE_KEYS = Object.keys(wpCoreStrings);
     const COMMON_KEYS = WP_CORE_KEYS.filter(key =>
       GUTENBERG_KEYS.includes(key)
     );
-
     let comparison: GutenbergTranslationComparison[] = [];
     COMMON_KEYS.forEach(key => {
       comparison = [
         ...comparison,
         {
+          areEqual: gutenbergStrings[key] === wpCoreStrings[key],
           gutenberg: gutenbergStrings[key],
           original: key,
-          wpCore: wpCoreStrings[key]
+          wpCore: wpCoreStrings[key],
+          wpCoreProject: this.wpCoreNameProjectMapper.getValue(wpSubproject),
         }
       ];
     });

@@ -1,0 +1,9 @@
+export type PluginProject = 'dev' | 'stable';
+
+export type WordPressSubProject = '/' | '/admin/' | '/admin/network/' | '/cc/';
+
+export type WpCoreSubprojectNames =
+  | 'GUTENBERG_STRING_COMPARATOR.WP_CORE_SUBPROJECTS_NAME.MAIN'
+  | 'GUTENBERG_STRING_COMPARATOR.WP_CORE_SUBPROJECTS_NAME.ADMIN'
+  | 'GUTENBERG_STRING_COMPARATOR.WP_CORE_SUBPROJECTS_NAME.NETWORK'
+  | 'GUTENBERG_STRING_COMPARATOR.WP_CORE_SUBPROJECTS_NAME.CC';

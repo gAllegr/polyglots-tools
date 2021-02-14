@@ -1,14 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TranslationFromWpTranslate } from 'src/app/gutenberg-string-comparator/models/translation-from-wp.model';
+import { TranslationFromWpTranslate } from 'src/app/gutenberg-string-comparator/models/translation-from-wp-translate.model';
 import { environment } from 'src/environments/environment';
+import {
+  PluginProject,
+  WordPressSubProject
+} from '../../models/wp-translate-projects.type';
 
 /**
  * Perform the HTTP calls to retrieve data form the WordPress Translate tool.
  */
 @Injectable({
-  providedIn: 'root'
+  // eslint-disable-next-line unicorn/no-null
+  providedIn: null
 })
 export class TranslateWpRoutesService {
   constructor(private readonly http: HttpClient) {}
@@ -23,7 +28,7 @@ export class TranslateWpRoutesService {
    */
   public getPluginStrings(
     slug: string,
-    project: 'stable' | 'dev' = 'stable'
+    project: PluginProject = 'stable'
   ): Observable<TranslationFromWpTranslate> {
     const LANGUAGE = 'it';
     const URL = `${environment.hosts.wpTranslate}/projects/wp-plugins/${slug}/${project}/${LANGUAGE}/default/export-translations/?format=ngx`;
@@ -38,9 +43,11 @@ export class TranslateWpRoutesService {
    *
    * @returns {Observable<TranslationFromWpTranslate>} The Observable that contains the WordPress Core strings.
    */
-  public getLastWordPressTranslations(): Observable<TranslationFromWpTranslate> {
+  public getLastWordPressTranslations(
+    subproject: WordPressSubProject = '/'
+  ): Observable<TranslationFromWpTranslate> {
     const LANGUAGE = 'it';
-    const URL = `${environment.hosts.wpTranslate}/projects/wp/dev/${LANGUAGE}/default/export-translations/?format=ngx`;
+    const URL = `${environment.hosts.wpTranslate}/projects/wp/dev${subproject}${LANGUAGE}/default/export-translations/?format=ngx`;
 
     return this.http.get<TranslationFromWpTranslate>(
       `${environment.proxy}${URL}`

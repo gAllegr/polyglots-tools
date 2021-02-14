@@ -15,8 +15,15 @@
         "NUMBER": "N°",
         "ORIGINAL_STRING": "Originale",
         "PLUGIN_STRING": "Gutenberg",
-        "WP_CORE_STRING": "WP Core"
+        "WP_CORE_STRING": "WP Core",
+        "WP_CORE_PROJECT": "Progetto WP Core"
       }
+    },
+    "WP_CORE_SUBPROJECTS_NAME": {
+      "ADMIN": "Administration",
+      "CC": "Continents & Cities",
+      "MAIN": "Progetto principale",
+      "NETWORK": "Network Admin"
     }
   },
   "NAVBAR": {
