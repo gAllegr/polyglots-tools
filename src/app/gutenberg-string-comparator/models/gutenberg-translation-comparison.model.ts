@@ -7,6 +7,7 @@ import { WpCoreSubprojectNames } from './wp-translate-projects.type';
 export interface GutenbergTranslationComparison {
   areEqual: boolean;
   gutenberg: string;
+  isNew: boolean;
   original: string;
   wpCore: string;
   wpCoreProject: WpCoreSubprojectNames;

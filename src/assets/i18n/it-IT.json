@@ -23,7 +23,8 @@
       "ADMIN": "Administration",
       "CC": "Continents & Cities",
       "MAIN": "Progetto principale",
-      "NETWORK": "Network Admin"
+      "NETWORK": "Network Admin",
+      "NONE": "Nessuno"
     }
   },
   "NAVBAR": {

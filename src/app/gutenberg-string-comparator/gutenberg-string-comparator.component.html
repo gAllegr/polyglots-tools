@@ -67,7 +67,11 @@
       <tbody>
         <tr
           *ngFor="let string of strings; index as number"
-          [ngClass]="string.areEqual ? 'bg-success' : 'bg-warning'"
+          [ngClass]="{
+            'bg-info': string.isNew,
+            'bg-success': !string.isNew && string.areEqual,
+            'bg-warning': !string.isNew && !string.areEqual
+          }"
         >
           <th scope="row">{{ number }}</th>
           <td>{{ string.original }}</td>

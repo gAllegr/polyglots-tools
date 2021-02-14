@@ -66,43 +66,63 @@ export class StringRetrieverService {
     )
       .pipe(
         tap(() => this._loading$.next(true)),
-        map(response => {
-          const [
-            GUTENBERG_STRINGS,
-            WP_CORE_STRINGS,
-            WP_CORE_ADMIN_STRINGS,
-            WP_CORE_NETWORK_STRINGS,
-            WP_CORE_CC_STRINGS
-          ] = [...response];
-          return [
-            ...this.createComparisonObject(
-              GUTENBERG_STRINGS,
-              WP_CORE_STRINGS,
-              '/'
-            ),
-            ...this.createComparisonObject(
-              GUTENBERG_STRINGS,
-              WP_CORE_ADMIN_STRINGS,
-              '/admin/'
-            ),
-            ...this.createComparisonObject(
-              GUTENBERG_STRINGS,
-              WP_CORE_NETWORK_STRINGS,
-              '/admin/network/'
-            ),
-            ...this.createComparisonObject(
-              GUTENBERG_STRINGS,
-              WP_CORE_CC_STRINGS,
-              '/cc/'
-            )
-          ];
-        })
+        map(response => this.convertStringToComparisonObject(response))
       )
       .subscribe(
         result => this._search$.next(result),
         (error: Error) => this._error$.next(error.message)
       )
       .add(() => this._loading$.next(false));
+  }
+
+  /**
+   * Get strings retrieved from WordPress Translate API and compare them.
+   *
+   * @param translationStrings The translations collection retrieved from Translate API. Will
+   * contain, in this specific order: Gutenberg strings, WordPress Core main strings, WordPress
+   * Core admin strings, WordPress Core admin newtwork strings and WordPress Core continents
+   * and cities strings.
+   * @returns {GutenbergTranslationComparison[]} The comparison object with all new strings.
+   */
+  private convertStringToComparisonObject(
+    translationStrings: TranslationFromWpTranslate[]
+  ): GutenbergTranslationComparison[] {
+    const [
+      GUTENBERG_STRINGS,
+      WP_CORE_STRINGS,
+      WP_CORE_ADMIN_STRINGS,
+      WP_CORE_NETWORK_STRINGS,
+      WP_CORE_CC_STRINGS
+    ] = [...translationStrings];
+    return [
+      ...this.createWpCoreComparisonObject(
+        GUTENBERG_STRINGS,
+        WP_CORE_STRINGS,
+        '/'
+      ),
+      ...this.createWpCoreComparisonObject(
+        GUTENBERG_STRINGS,
+        WP_CORE_ADMIN_STRINGS,
+        '/admin/'
+      ),
+      ...this.createWpCoreComparisonObject(
+        GUTENBERG_STRINGS,
+        WP_CORE_NETWORK_STRINGS,
+        '/admin/network/'
+      ),
+      ...this.createWpCoreComparisonObject(
+        GUTENBERG_STRINGS,
+        WP_CORE_CC_STRINGS,
+        '/cc/'
+      ),
+      ...this.createNewStringsComparisonObject(
+        GUTENBERG_STRINGS,
+        WP_CORE_STRINGS,
+        WP_CORE_ADMIN_STRINGS,
+        WP_CORE_NETWORK_STRINGS,
+        WP_CORE_CC_STRINGS
+      )
+    ];
   }
 
   /**
@@ -152,7 +172,7 @@ export class StringRetrieverService {
    * @param wpCoreStrings Translations of a WordPress core subproject.
    * @returns {GutenbergTranslationComparison[]} The object that compare Gutenberg strings.
    */
-  private createComparisonObject(
+  private createWpCoreComparisonObject(
     gutenbergStrings: TranslationFromWpTranslate,
     wpCoreStrings: TranslationFromWpTranslate,
     wpSubproject: WordPressSubProject
@@ -169,9 +189,53 @@ export class StringRetrieverService {
         {
           areEqual: gutenbergStrings[key] === wpCoreStrings[key],
           gutenberg: gutenbergStrings[key],
+          isNew: false,
           original: key,
           wpCore: wpCoreStrings[key],
-          wpCoreProject: this.wpCoreNameProjectMapper.getValue(wpSubproject),
+          wpCoreProject: this.wpCoreNameProjectMapper.getValue(wpSubproject)
+        }
+      ];
+    });
+
+    return comparison;
+  }
+
+  /**
+   * Find new strings in Gutenberg plugin.
+   *
+   * @param gutenbergStrings Translation of the Gutenberg plugin.
+   * @param wpCoreStrings Translations of the main WordPress core subproject.
+   * @param wpCoreAdminStrings Translations of the admin WordPress core subproject.
+   * @param wpCoreNetworkStrings Translations of the network WordPress core subproject.
+   * @param wpCoreCcStrings Translations of the city WordPress core subproject.
+   * @returns {GutenbergTranslationComparison[]} The comparison object with all new strings.
+   */
+  private createNewStringsComparisonObject(
+    gutenbergStrings: TranslationFromWpTranslate,
+    wpCoreStrings: TranslationFromWpTranslate,
+    wpCoreAdminStrings: TranslationFromWpTranslate,
+    wpCoreNetworkStrings: TranslationFromWpTranslate,
+    wpCoreCcStrings: TranslationFromWpTranslate
+  ): GutenbergTranslationComparison[] {
+    const GUTENBERG_KEYS = Object.keys(gutenbergStrings);
+    const NEW_KEYS = GUTENBERG_KEYS.filter(
+      key =>
+        !Object.keys(wpCoreStrings).includes(key) &&
+        !Object.keys(wpCoreAdminStrings).includes(key) &&
+        !Object.keys(wpCoreNetworkStrings).includes(key) &&
+        !Object.keys(wpCoreCcStrings).includes(key)
+    );
+    let comparison: GutenbergTranslationComparison[] = [];
+    NEW_KEYS.forEach(key => {
+      comparison = [
+        ...comparison,
+        {
+          areEqual: false,
+          gutenberg: gutenbergStrings[key],
+          isNew: true,
+          original: key,
+          wpCore: '',
+          wpCoreProject: this.wpCoreNameProjectMapper.getValue(undefined)
         }
       ];
     });
