@@ -11,8 +11,7 @@ import { WpCoreNameProjectMapperService } from '../wp-core-name-project-mapper/w
  * Perform the HTTP calls to retrieve strings from translate.wordpress.org.
  */
 @Injectable({
-  // eslint-disable-next-line unicorn/no-null
-  providedIn: null
+  providedIn: 'root'
 })
 export class StringRetrieverService {
   private readonly _error$ = new Subject<string>();

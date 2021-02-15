@@ -12,8 +12,7 @@ import {
  * Perform the HTTP calls to retrieve data form the WordPress Translate tool.
  */
 @Injectable({
-  // eslint-disable-next-line unicorn/no-null
-  providedIn: null
+  providedIn: 'root'
 })
 export class TranslateWpRoutesService {
   constructor(private readonly http: HttpClient) {}

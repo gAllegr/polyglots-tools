@@ -8,8 +8,7 @@ import {
  * Map the the WordPress core subproject names and paths.
  */
 @Injectable({
-  // eslint-disable-next-line unicorn/no-null
-  providedIn: null
+  providedIn: 'root'
 })
 export class WpCoreNameProjectMapperService {
   private readonly _mapper: Map<
