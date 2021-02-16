@@ -1,5 +1,40 @@
 [
   {
+    "version":"0.2.0",
+    "comments": [
+      {
+        "build":"13",
+        "date": "2021-02-16",
+        "type": "FEATURE",
+        "text": "Added tab controls on Gutenberg comparator"
+      },
+      {
+        "build":"13",
+        "date": "2021-02-16",
+        "type": "FEATURE",
+        "text": "Changed type of visualization for Gutenberg string comparator"
+      },
+      {
+        "build":"12",
+        "date": "2021-02-14",
+        "type": "FEATURE",
+        "text": "Added more details on Gutenberg string visualization"
+      },
+      {
+        "build":"12",
+        "date": "2021-02-14",
+        "type": "BUGFIX",
+        "text": "Retrieved missing strings from WordPress Core subprojects"
+      },
+      {
+        "build":"12",
+        "date": "2021-02-14",
+        "type": "QUALITY",
+        "text": "Improved architecture"
+      }
+    ]
+  },
+  {
     "version": "0.1.2",
     "comments": [
       {
