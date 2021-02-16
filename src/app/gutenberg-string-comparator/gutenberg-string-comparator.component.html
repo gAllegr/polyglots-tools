@@ -37,8 +37,10 @@
       >
         <ng-template ngbPanelHeader>
           <div
-            class="d-flex align-items-center justify-content-between"
+            class="d-flex align-items-center justify-content-between panel-heading"
             (click)="acc.toggle('string-' + index)"
+            (keydown.enter)="acc.toggle('string-' + index)"
+            tabindex="0"
           >
             <p class="w-75 m-0 pr-3">
               {{
