@@ -1,17 +1,11 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BadgeComponent } from './changelog/badge/badge.component';
-import { ChangelogComponent } from './changelog/changelog.component';
-import { FooterComponent } from './footer/footer.component';
-import { GutenbergStringComparatorComponent } from './gutenberg-string-comparator/gutenberg-string-comparator.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TemplateModule } from './template/template.module';
 
 /**
  * Function required by NgxTranslate tool to retrieve translation files.
@@ -28,19 +22,10 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
  */
 @NgModule({
   bootstrap: [AppComponent],
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    GutenbergStringComparatorComponent,
-    PageNotFoundComponent,
-    FooterComponent,
-    ChangelogComponent,
-    BadgeComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgbModule,
     TranslateModule.forRoot({
       loader: {
         deps: [HttpClient],
@@ -48,6 +33,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
         useFactory: createTranslateLoader
       }
     }),
+    TemplateModule,
     AppRoutingModule
   ]
 })

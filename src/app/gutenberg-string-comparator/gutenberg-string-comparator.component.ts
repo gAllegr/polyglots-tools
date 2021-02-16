@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GutenbergTranslationComparison } from './models/gutenberg-translation-comparison.model';
-import { StringRetrieverService } from './string-retriever/string-retriever.service';
+import { StringRetrieverService } from './services/string-retriever/string-retriever.service';
 
 /**
  * Show the comparison between the Gutemberg string from the plugin and the WordPress core.

@@ -5,7 +5,7 @@
     </h1>
   </div>
 </div>
-<div class="row mt-2">
+<div class="row justify-content-center mt-2">
   <!-- Show loader -->
   <div
     class="col-12 d-flex align-items-center justify-content-center"
@@ -26,46 +26,78 @@
     </p>
   </div>
   <!-- Show results -->
-  <div class="col-12" *ngIf="gutenbergStrings$ | async as strings">
-    <table
-      class="table table-striped table-bordered table-hover table-sm table-responsive"
-    >
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">
-            {{
-              'GUTENBERG_STRING_COMPARATOR.RESULTS.COLUMN_HEADERS.NUMBER'
-                | translate
-            }}
-          </th>
-          <th scope="col">
-            {{
-              'GUTENBERG_STRING_COMPARATOR.RESULTS.COLUMN_HEADERS.ORIGINAL_STRING'
-                | translate
-            }}
-          </th>
-          <th scope="col">
-            {{
-              'GUTENBERG_STRING_COMPARATOR.RESULTS.COLUMN_HEADERS.PLUGIN_STRING'
-                | translate
-            }}
-          </th>
-          <th scope="col">
-            {{
-              'GUTENBERG_STRING_COMPARATOR.RESULTS.COLUMN_HEADERS.WP_CORE_STRING'
-                | translate
-            }}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let string of strings; index as number">
-          <th scope="row">{{ number }}</th>
-          <td>{{ string.original }}</td>
-          <td>{{ string.gutenberg }}</td>
-          <td>{{ string.wpCore }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div
+    class="col-12 col-lg-11 col-xl-10"
+    *ngIf="gutenbergStrings$ | async as strings"
+  >
+    <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
+      <ngb-panel
+        *ngFor="let string of strings; let index = index"
+        [id]="'string-' + index"
+      >
+        <ng-template ngbPanelHeader>
+          <div
+            class="d-flex align-items-center justify-content-between panel-heading"
+            (click)="acc.toggle('string-' + index)"
+            (keydown.enter)="acc.toggle('string-' + index)"
+            tabindex="0"
+          >
+            <p class="w-75 m-0 pr-3">
+              {{
+                'GUTENBERG_STRING_COMPARATOR.RESULTS.ORIGINAL_STRING'
+                  | translate
+              }}: <span class="font-italic">{{ string.original }}</span>
+            </p>
+            <div class="w-auto mr-2">
+              <p class="mb-0">
+                {{
+                  'GUTENBERG_STRING_COMPARATOR.RESULTS.WP_CORE_PROJECT'
+                    | translate
+                }}:<br />
+                <span class="font-italic">
+                  {{ string.wpCoreProject | translate }}
+                </span>
+              </p>
+              <span
+                class="badge badge-pill gray-linear-gradient"
+                [ngClass]="{
+                  'badge-info': string.isNew,
+                  'badge-success': !string.isNew && string.areEqual,
+                  'badge-danger': !string.isNew && !string.areEqual
+                }"
+              >
+                {{ string.status | translate | uppercase }}
+              </span>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <div class="row">
+            <div class="col-6">
+              <p>
+                {{
+                  'GUTENBERG_STRING_COMPARATOR.RESULTS.WP_CORE_STRING'
+                    | translate
+                }}:
+              </p>
+              <span class="font-italic">
+                {{ string.wpCore }}
+              </span>
+            </div>
+            <div class="col-6">
+              <p>
+                {{
+                  'GUTENBERG_STRING_COMPARATOR.RESULTS.PLUGIN_STRING'
+                    | translate
+                }}:
+              </p>
+              <span class="font-italic">
+                {{ string.gutenberg }}
+              </span>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
   </div>
 </div>
