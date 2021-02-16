@@ -11,13 +11,15 @@
     },
     "LOADING": "Ricerca delle stringhe in corso",
     "RESULTS": {
-      "COLUMN_HEADERS": {
-        "NUMBER": "N°",
-        "ORIGINAL_STRING": "Originale",
-        "PLUGIN_STRING": "Gutenberg",
-        "WP_CORE_STRING": "WP Core",
-        "WP_CORE_PROJECT": "Progetto WP Core"
-      }
+      "ORIGINAL_STRING": "Stringa originale",
+      "PLUGIN_STRING": "Dal plugin",
+      "STATUS": {
+        "EQUAL": "Uguale",
+        "DIFFERENT": "Diverso",
+        "NEW": "Nuovo"
+      },
+      "WP_CORE_STRING": "Dal Core",
+      "WP_CORE_PROJECT": "Progetto WP Core"
     },
     "WP_CORE_SUBPROJECTS_NAME": {
       "ADMIN": "Administration",

@@ -183,13 +183,17 @@ export class StringRetrieverService {
     );
     let comparison: GutenbergTranslationComparison[] = [];
     COMMON_KEYS.forEach(key => {
+      const ARE_EQUAL = gutenbergStrings[key] === wpCoreStrings[key];
       comparison = [
         ...comparison,
         {
-          areEqual: gutenbergStrings[key] === wpCoreStrings[key],
+          areEqual: ARE_EQUAL,
           gutenberg: gutenbergStrings[key],
           isNew: false,
           original: key,
+          status: ARE_EQUAL
+            ? 'GUTENBERG_STRING_COMPARATOR.RESULTS.STATUS.EQUAL'
+            : 'GUTENBERG_STRING_COMPARATOR.RESULTS.STATUS.DIFFERENT',
           wpCore: wpCoreStrings[key],
           wpCoreProject: this.wpCoreNameProjectMapper.getValue(wpSubproject)
         }
@@ -233,6 +237,7 @@ export class StringRetrieverService {
           gutenberg: gutenbergStrings[key],
           isNew: true,
           original: key,
+          status: 'GUTENBERG_STRING_COMPARATOR.RESULTS.STATUS.NEW',
           wpCore: '',
           wpCoreProject: this.wpCoreNameProjectMapper.getValue(undefined)
         }
