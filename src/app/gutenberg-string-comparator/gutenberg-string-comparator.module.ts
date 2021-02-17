@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbAccordionModule,
+  NgbPaginationModule
+} from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { GutenbergStringComparatorRoutingModule } from './gutenberg-string-comparator-routing.module';
 import { GutenbergStringComparatorComponent } from './gutenberg-string-comparator.component';
@@ -13,6 +16,7 @@ import { GutenbergStringComparatorComponent } from './gutenberg-string-comparato
   imports: [
     CommonModule,
     NgbAccordionModule,
+    NgbPaginationModule,
     TranslateModule.forChild(),
     GutenbergStringComparatorRoutingModule
   ]

@@ -30,9 +30,15 @@
     class="col-12 col-lg-11 col-xl-10"
     *ngIf="gutenbergStrings$ | async as strings"
   >
-    <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
+    <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" [animation]="true">
       <ngb-panel
-        *ngFor="let string of strings; let index = index"
+        *ngFor="
+          let string of strings
+            | slice
+              : (pagination.page - 1) * pagination.itemsPerPage
+              : pagination.page * pagination.itemsPerPage;
+          let index = index
+        "
         [id]="'string-' + index"
       >
         <ng-template ngbPanelHeader>
@@ -46,7 +52,8 @@
               {{
                 'GUTENBERG_STRING_COMPARATOR.RESULTS.ORIGINAL_STRING'
                   | translate
-              }}: <span class="font-italic">{{ string.original }}</span>
+              }}: <br />
+              <span class="font-italic">{{ string.original }}</span>
             </p>
             <div class="w-auto mr-2">
               <p class="mb-0">
@@ -99,5 +106,17 @@
         </ng-template>
       </ngb-panel>
     </ngb-accordion>
+
+    <div class="row justify-content-center mt-3">
+      <ngb-pagination
+        [(page)]="pagination.page"
+        [pageSize]="pagination.itemsPerPage"
+        [collectionSize]="strings.length"
+        [maxSize]="pagination.pagesToDisplay"
+        [rotate]="pagination.shouldRotate"
+        [ellipses]="pagination.showEllipsis"
+        [boundaryLinks]="pagination.showBoundaryButtons"
+      ></ngb-pagination>
+    </div>
   </div>
 </div>
