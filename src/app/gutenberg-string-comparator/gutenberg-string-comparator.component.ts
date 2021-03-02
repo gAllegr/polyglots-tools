@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import {
-  ACCORDION_CONFIGURATION,
-  AccordionConfiguration
-} from './models/accordion-configuration.model';
 import { GutenbergTranslationComparison } from './models/gutenberg-translation-comparison.model';
 import { StringRetrieverService } from './services/string-retriever/string-retriever.service';
 
@@ -17,13 +13,11 @@ import { StringRetrieverService } from './services/string-retriever/string-retri
   templateUrl: './gutenberg-string-comparator.component.html'
 })
 export class GutenbergStringComparatorComponent implements OnInit {
-  public pagination: AccordionConfiguration;
   public busy$: Observable<boolean>;
   public errorMessage$: Observable<string>;
   public gutenbergStrings$: Observable<GutenbergTranslationComparison[]>;
 
   constructor(private readonly stringRetrieverService: StringRetrieverService) {
-    this.pagination = ACCORDION_CONFIGURATION;
     this.busy$ = this.stringRetrieverService.loading$;
     this.errorMessage$ = this.stringRetrieverService.error$;
     this.gutenbergStrings$ = this.stringRetrieverService.search$;

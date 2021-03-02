@@ -1,6 +1,6 @@
 {
   "name": "polyglots-tools",
-  "version": "0.2.1-14",
+  "version": "0.2.2-15",
   "author": {
     "email": "allegretta92@hotmail.it",
     "name": "G. Allegretta"
@@ -52,6 +52,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
+    "ngx-virtual-scroller": "^4.0.3",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",

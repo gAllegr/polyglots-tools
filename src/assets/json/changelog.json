@@ -1,5 +1,16 @@
 [
   {
+    "version": "0.2.2",
+    "comments": [
+      {
+        "build": "15",
+        "date": "2021-03-02",
+        "type": "QUALITY",
+        "text": "Changed pagination with virtual scrolling"
+      }
+    ]
+  },
+  {
     "version": "0.2.1",
     "comments": [
       {
