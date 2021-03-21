@@ -1,0 +1,15 @@
+.scroller {
+    height: 78vh;
+  }
+  
+  .panel-heading {
+    padding: 0.75rem 1.25rem;
+  
+    &:focus,
+    &:hover {
+      background-color: var(--dodgerblue-opaque);
+      font-size: 1.05rem;
+      outline: auto 1px;
+    }
+  }
+  

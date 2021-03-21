@@ -18,7 +18,7 @@ export class FilterStringsPipe implements PipeTransform {
   // eslint-disable-next-line jsdoc/require-jsdoc
   public transform(
     value: GutenbergTranslationComparison[],
-    filters: StringFilters | undefined,
+    filters: StringFilters | null,
     scroll: VirtualScrollerComponent
   ): GutenbergTranslationComparison[] {
     scroll.viewPortItems = [];

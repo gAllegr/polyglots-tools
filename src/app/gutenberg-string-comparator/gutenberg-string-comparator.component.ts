@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GutenbergTranslationComparison } from './models/gutenberg-translation-comparison.model';
-import { StringFilters } from './models/string-filters.model';
 import { StringRetrieverService } from './services/string-retriever/string-retriever.service';
 
 /**
@@ -17,7 +16,6 @@ export class GutenbergStringComparatorComponent implements OnInit {
   public busy$: Observable<boolean>;
   public errorMessage$: Observable<string>;
   public gutenbergStrings$: Observable<GutenbergTranslationComparison[]>;
-  public selectedFilters: StringFilters | undefined;
 
   constructor(private readonly stringRetrieverService: StringRetrieverService) {
     this.busy$ = this.stringRetrieverService.loading$;
@@ -37,15 +35,5 @@ export class GutenbergStringComparatorComponent implements OnInit {
    */
   public getStrings(): void {
     this.stringRetrieverService.getStrings();
-  }
-
-  /**
-   * Invoked when the user modify the search params.
-   *
-   * @param filters The values selected by the user.
-   * @returns {void} Nothing.
-   */
-  public onSelectedFilters(filters: StringFilters): void {
-    this.selectedFilters = filters;
   }
 }

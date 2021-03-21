@@ -13,7 +13,7 @@ import { StringFilters } from '../models/string-filters.model';
 })
 export class GutenbergFiltersComponent {
   public filters: FormGroup;
-  @Output() public readonly filtersValue = new EventEmitter<StringFilters>();
+  @Output() public readonly filtersUpdated = new EventEmitter<StringFilters>();
 
   constructor(private readonly formBuilder: FormBuilder) {
     this.filters = this.formBuilder.group({
@@ -25,7 +25,7 @@ export class GutenbergFiltersComponent {
       .subscribe(value => {
         const SELECTED_FILTERS = value as StringFilters;
         SELECTED_FILTERS.searchFor = SELECTED_FILTERS.searchFor.toLowerCase();
-        this.filtersValue.emit(SELECTED_FILTERS);
+        this.filtersUpdated.emit(SELECTED_FILTERS);
       });
   }
 }

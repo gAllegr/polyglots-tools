@@ -5,6 +5,7 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import { GutenbergFiltersComponent } from './gutenberg-filters/gutenberg-filters.component';
+import { GutenbergResultsComponent } from './gutenberg-results/gutenberg-results.component';
 import { GutenbergStringComparatorRoutingModule } from './gutenberg-string-comparator-routing.module';
 import { GutenbergStringComparatorComponent } from './gutenberg-string-comparator.component';
 import { FilterStringsPipe } from './pipe/filter-strings.pipe';
@@ -16,6 +17,7 @@ import { FilterStringsPipe } from './pipe/filter-strings.pipe';
   declarations: [
     GutenbergStringComparatorComponent,
     GutenbergFiltersComponent,
+    GutenbergResultsComponent,
     FilterStringsPipe
   ],
   imports: [

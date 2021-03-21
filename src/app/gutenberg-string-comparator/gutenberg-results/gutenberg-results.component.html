@@ -1,0 +1,75 @@
+<virtual-scroller
+  #scroll
+  [items]="strings | filterStrings: (selectedFilters$ | async):scroll"
+  class="scroller"
+  (vsUpdate)="acc.collapseAll()"
+>
+  <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" [animation]="true">
+    <ngb-panel
+      *ngFor="let string of scroll.viewPortItems; let index = index"
+      [id]="'string-' + index"
+    >
+      <ng-template ngbPanelHeader>
+        <div
+          class="d-flex align-items-center justify-content-between panel-heading"
+          (click)="acc.toggle('string-' + index)"
+          (keydown.enter)="acc.toggle('string-' + index)"
+          tabindex="0"
+        >
+          <p class="w-75 m-0 pr-3">
+            {{
+              'GUTENBERG_STRING_COMPARATOR.RESULTS.ORIGINAL_STRING' | translate
+            }}: <br />
+            <span class="font-italic">{{ string.original }}</span>
+          </p>
+          <div class="w-auto mr-2">
+            <p class="mb-0">
+              {{
+                'GUTENBERG_STRING_COMPARATOR.RESULTS.WP_CORE_PROJECT'
+                  | translate
+              }}:<br />
+              <span class="font-italic">
+                {{ string.wpCoreProject | translate }}
+              </span>
+            </p>
+            <span
+              class="badge badge-pill gray-linear-gradient"
+              [ngClass]="{
+                'badge-info': string.isNew,
+                'badge-success': !string.isNew && string.areEqual,
+                'badge-danger': !string.isNew && !string.areEqual
+              }"
+            >
+              {{ string.status | translate | uppercase }}
+            </span>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <div class="row">
+          <div class="col-6">
+            <p>
+              {{
+                'GUTENBERG_STRING_COMPARATOR.RESULTS.WP_CORE_STRING'
+                  | translate
+              }}:
+            </p>
+            <span class="font-italic">
+              {{ string.wpCore }}
+            </span>
+          </div>
+          <div class="col-6">
+            <p>
+              {{
+                'GUTENBERG_STRING_COMPARATOR.RESULTS.PLUGIN_STRING' | translate
+              }}:
+            </p>
+            <span class="font-italic">
+              {{ string.gutenberg }}
+            </span>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</virtual-scroller>

@@ -3,6 +3,12 @@
     "version": "0.3.0",
     "comments": [
       {
+        "build": "17",
+        "date": "2021-03-21",
+        "type": "QUALITY",
+        "text": "Moved Gutenberg string results to a separate component"
+      },
+      {
         "build": "16",
         "date": "2021-03-21",
         "type": "BUGFIX",
