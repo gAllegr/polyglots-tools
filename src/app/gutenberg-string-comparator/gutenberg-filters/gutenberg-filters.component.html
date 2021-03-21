@@ -1,0 +1,19 @@
+<form class="row px-4" [formGroup]="filters">
+  <div class="col-12 form-group">
+    <label for="search-for">
+      {{ 'GUTENBERG_STRING_COMPARATOR.FILTERS.TEXT_FILTER.LABEL' | translate }}
+    </label>
+    <input
+      type="text"
+      class="form-control"
+      id="search-for"
+      aria-labelledby="search-for"
+      aria-describedby="search-for"
+      [placeholder]="
+        'GUTENBERG_STRING_COMPARATOR.FILTERS.TEXT_FILTER.PLACEHOLDER'
+          | translate
+      "
+      formControlName="searchFor"
+    />
+  </div>
+</form>

@@ -76,7 +76,6 @@
   "attr-new-line": false,
   "attr-validate": true,
   "id-no-dup": true,
-  "id-style": "dash",
   "id-class-style": "dash",
   "id-class-ignore-regex": false,
   "id-class-no-ad": false,

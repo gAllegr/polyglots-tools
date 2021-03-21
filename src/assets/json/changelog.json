@@ -1,5 +1,34 @@
 [
   {
+    "version": "0.3.0",
+    "comments": [
+      {
+        "build": "16",
+        "date": "2021-03-21",
+        "type": "BUGFIX",
+        "text": "Virtual scroller height adapting when filtering strings"
+      },
+      {
+        "build": "16",
+        "date": "2021-03-21",
+        "type": "BUGFIX",
+        "text": "Fixed accordion collapsing when scrolling"
+      },
+      {
+        "build": "16",
+        "date": "2021-03-21",
+        "type": "FEATURE",
+        "text": "Created the pipe filter for Gutenberg strings"
+      },
+      {
+        "build": "16",
+        "date": "2021-03-21",
+        "type": "FEATURE",
+        "text": "Created filter to search a specific text among Gutenberg strings"
+      }
+    ]
+  },
+  {
     "version": "0.2.2",
     "comments": [
       {

@@ -9,6 +9,12 @@
       "CANNOT_GET_PLUGIN_STRINGS": "Non è stato possibile recuperare le stringhe del plugin Gutenberg",
       "CANNOT_GET_WORDPRESS_STRINGS": "Non è stato possibile recuperare le stringhe del core di WordPress"
     },
+    "FILTERS": {
+      "TEXT_FILTER": {
+        "LABEL": "Cerca un testo specifico:",
+        "PLACEHOLDER": "Digita la stringa da cercare"
+      }
+    },
     "LOADING": "Ricerca delle stringhe in corso",
     "RESULTS": {
       "ORIGINAL_STRING": "Stringa originale",
