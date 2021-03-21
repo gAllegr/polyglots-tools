@@ -3,6 +3,12 @@
     "version": "0.3.0",
     "comments": [
       {
+        "build": "19",
+        "date": "2021-03-21",
+        "type": "FEATURE",
+        "text": "Created filter to search a strings of a specific WP Core project"
+      },
+      {
         "build": "18",
         "date": "2021-03-21",
         "type": "BUGFIX",

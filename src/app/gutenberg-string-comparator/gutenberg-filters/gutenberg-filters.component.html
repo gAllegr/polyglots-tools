@@ -1,11 +1,11 @@
 <form class="row px-4" [formGroup]="filters">
-  <div class="col-12 form-group">
+  <div class="col-12 col-sm-6 form-group">
     <label for="search-for">
       {{ 'GUTENBERG_STRING_COMPARATOR.FILTERS.TEXT_FILTER.LABEL' | translate }}
     </label>
     <input
       type="text"
-      class="form-control"
+      class="form-control form-control-sm"
       id="search-for"
       aria-labelledby="search-for"
       aria-describedby="search-for"
@@ -16,4 +16,25 @@
       formControlName="searchFor"
     />
   </div>
+  <fieldset class="col-12 col-sm-4 form-group">
+    <legend class="col-form-label pt-0">
+      {{
+        'GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.LEGEND' | translate
+      }}
+    </legend>
+    <select class="custom-select custom-select-sm" formControlName="subproject">
+      <option
+        value="GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.ALL_VALUE"
+        selected
+      >
+        {{
+          'GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.ALL_VALUE'
+            | translate
+        }}
+      </option>
+      <option *ngFor="let project of subProjectSelection" [value]="project">
+        {{ project | translate }}
+      </option>
+    </select>
+  </fieldset>
 </form>

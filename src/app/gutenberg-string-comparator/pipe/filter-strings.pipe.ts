@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { VirtualScrollerComponent } from 'ngx-virtual-scroller';
 import { GutenbergTranslationComparison } from '../models/gutenberg-translation-comparison.model';
 import { StringFilters } from '../models/string-filters.model';
+import { WpCoreSubprojectNames } from '../models/wp-translate-projects.type';
 
 /**
  * Filter Gutenberg strings based on filters selected by the user.
@@ -22,15 +23,32 @@ export class FilterStringsPipe implements PipeTransform {
     scroll: VirtualScrollerComponent
   ): GutenbergTranslationComparison[] {
     scroll.viewPortItems = [];
-    let filteredStrings = [...value];
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+    scroll.scrollToIndex(0);
+    let strings = [...value];
 
     if (filters) {
-      filteredStrings = [
-        ...this.filterByText(filteredStrings, filters.searchFor)
-      ];
+      strings = [...this.filterBySubProject(strings, filters.subproject)];
+      strings = [...this.filterByText(strings, filters.searchFor)];
     }
 
-    return filteredStrings;
+    return strings;
+  }
+
+  /**
+   * Search all Gutenberg strings that belongs to the requested subproject.
+   *
+   * @param strings The list of Gutenberg strings.
+   * @param project The requested project.
+   * @returns {GutenbergTranslationComparison[]} The list of strings that match the request.
+   */
+  private filterBySubProject(
+    strings: GutenbergTranslationComparison[],
+    project: WpCoreSubprojectNames | undefined
+  ): GutenbergTranslationComparison[] {
+    return project
+      ? strings.filter(singleString => singleString.wpCoreProject === project)
+      : strings;
   }
 
   /**

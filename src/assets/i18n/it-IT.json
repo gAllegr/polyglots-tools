@@ -10,6 +10,10 @@
       "CANNOT_GET_WORDPRESS_STRINGS": "Non è stato possibile recuperare le stringhe del core di WordPress"
     },
     "FILTERS": {
+      "SUB_PROJECTS": {
+        "ALL_VALUE": "Tutti",
+        "LEGEND": "Quale progetto mostrare:"
+      },
       "TEXT_FILTER": {
         "LABEL": "Cerca un testo specifico:",
         "PLACEHOLDER": "Digita la stringa da cercare"
