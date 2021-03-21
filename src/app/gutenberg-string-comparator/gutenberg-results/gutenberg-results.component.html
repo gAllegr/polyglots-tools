@@ -12,7 +12,8 @@
       <ng-template ngbPanelHeader>
         <div
           class="d-flex align-items-center justify-content-between panel-heading"
-          (click)="acc.toggle('string-' + index)"
+          (focus)="acc.toggle('string-' + index)"
+          (blur)="acc.collapse('string-' + index)"
           (keydown.enter)="acc.toggle('string-' + index)"
           tabindex="0"
         >

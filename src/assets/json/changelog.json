@@ -3,6 +3,12 @@
     "version": "0.3.0",
     "comments": [
       {
+        "build": "18",
+        "date": "2021-03-21",
+        "type": "BUGFIX",
+        "text": "Fixed toggling of a single result"
+      },
+      {
         "build": "17",
         "date": "2021-03-21",
         "type": "QUALITY",
