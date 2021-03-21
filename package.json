@@ -27,6 +27,7 @@
     "lint:ts": "npx ng lint",
     "lint:html": "npx linthtml 'src/app/**/*.html'",
     "lint:style": "npx stylelint 'src/**/*.(css|scss)'",
+    "lint:dev": "npm run prettify:check && npm run lint:html && npm run lint:style && npm run lint:ts && npm run tsc",
     "tsc": "rm -rf dist/out-tsc && tsc",
     "docs": "npm run docs:compodoc && npm run docs:bundle-info",
     "docs:compodoc": "compodoc",
