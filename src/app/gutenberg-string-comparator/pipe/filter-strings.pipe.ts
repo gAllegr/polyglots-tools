@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { VirtualScrollerComponent } from 'ngx-virtual-scroller';
 import { GutenbergTranslationComparison } from '../models/gutenberg-translation-comparison.model';
 import { StringFilters } from '../models/string-filters.model';
+import { TranslationStatus } from '../models/translation-status.type';
 import { WpCoreSubprojectNames } from '../models/wp-translate-projects.type';
 
 /**
@@ -28,11 +29,28 @@ export class FilterStringsPipe implements PipeTransform {
     let strings = [...value];
 
     if (filters) {
+      strings = [...this.filterByTranslationStatus(strings, filters.status)];
       strings = [...this.filterBySubProject(strings, filters.subproject)];
       strings = [...this.filterByText(strings, filters.searchFor)];
     }
 
     return strings;
+  }
+
+  /**
+   * Return all Gutenberg strings with the requested status.
+   *
+   * @param strings The list of Gutenberg strings.
+   * @param status The requested status.
+   * @returns {GutenbergTranslationComparison[]} The list of strings that match the request.
+   */
+  private filterByTranslationStatus(
+    strings: GutenbergTranslationComparison[],
+    status: TranslationStatus | undefined
+  ): GutenbergTranslationComparison[] {
+    return status
+      ? strings.filter(singleString => singleString.status === status)
+      : strings;
   }
 
   /**

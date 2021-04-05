@@ -17,6 +17,10 @@
       "TEXT_FILTER": {
         "LABEL": "Cerca un testo specifico:",
         "PLACEHOLDER": "Digita la stringa da cercare"
+      },
+      "TRANSLATION_STATUS": {
+        "ALL_VALUE": "Tutti",
+        "LEGEND": "Quale stato mostrare:"
       }
     },
     "LOADING": "Ricerca delle stringhe in corso",

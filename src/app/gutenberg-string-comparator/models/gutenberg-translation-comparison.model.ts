@@ -1,9 +1,5 @@
+import { TranslationStatus } from './translation-status.type';
 import { WpCoreSubprojectNames } from './wp-translate-projects.type';
-
-type TranslationStatus =
-  | 'GUTENBERG_STRING_COMPARATOR.RESULTS.STATUS.DIFFERENT'
-  | 'GUTENBERG_STRING_COMPARATOR.RESULTS.STATUS.EQUAL'
-  | 'GUTENBERG_STRING_COMPARATOR.RESULTS.STATUS.NEW';
 
 /**
  * Model to represent the comparison between the strings of the Gutenberg plugin

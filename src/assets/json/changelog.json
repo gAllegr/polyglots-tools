@@ -1,5 +1,16 @@
 [
   {
+    "version": "0.3.1",
+    "comments": [
+      {
+        "build": "20",
+        "date": "2021-04-05",
+        "type": "FEATURE",
+        "text": "Created filter to search a strings with a specific status"
+      }
+    ]
+  },
+  {
     "version": "0.3.0",
     "comments": [
       {

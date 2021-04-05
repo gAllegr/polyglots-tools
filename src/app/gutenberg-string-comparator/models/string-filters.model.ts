@@ -1,3 +1,4 @@
+import { TranslationStatus } from './translation-status.type';
 import { WpCoreSubprojectNames } from './wp-translate-projects.type';
 
 /**
@@ -5,5 +6,6 @@ import { WpCoreSubprojectNames } from './wp-translate-projects.type';
  */
 export interface StringFilters {
   searchFor: string;
+  status: TranslationStatus | undefined;
   subproject: WpCoreSubprojectNames | undefined;
 }

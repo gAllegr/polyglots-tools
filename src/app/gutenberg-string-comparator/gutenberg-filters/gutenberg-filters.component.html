@@ -1,4 +1,4 @@
-<form class="row px-4" [formGroup]="filters">
+<form class="row justify-content-center px-4" [formGroup]="filters">
   <div class="col-12 col-sm-6 form-group">
     <label for="search-for">
       {{ 'GUTENBERG_STRING_COMPARATOR.FILTERS.TEXT_FILTER.LABEL' | translate }}
@@ -17,6 +17,28 @@
     />
   </div>
   <fieldset class="col-12 col-sm-4 form-group">
+    <legend class="col-form-label pt-0">
+      {{
+        'GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.LEGEND'
+          | translate
+      }}
+    </legend>
+    <select class="custom-select custom-select-sm" formControlName="status">
+      <option
+        value="GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.ALL_VALUE"
+        selected
+      >
+        {{
+          'GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.ALL_VALUE'
+            | translate
+        }}
+      </option>
+      <option *ngFor="let status of translationStatus" [value]="status">
+        {{ status | translate }}
+      </option>
+    </select>
+  </fieldset>
+  <fieldset class="col-12 col-sm-6 form-group">
     <legend class="col-form-label pt-0">
       {{
         'GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.LEGEND' | translate
