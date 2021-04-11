@@ -5,6 +5,12 @@
       {
         "build": "22",
         "date": "2021-04-11",
+        "type": "FEATURE",
+        "text": "Managed translations for the application (support en-GB and it-IT)"
+      },
+      {
+        "build": "22",
+        "date": "2021-04-11",
         "type": "BUGFIX",
         "text": "Retrieve full code for locales"
       },

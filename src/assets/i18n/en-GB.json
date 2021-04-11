@@ -1,0 +1,59 @@
+{
+  "COMMON": {
+    "BUILD": "Build",
+    "CHANGELOG": "Changelog",
+    "VERSION": "Version"
+  },
+  "GUTENBERG_STRING_COMPARATOR": {
+    "ERRORS": {
+      "CANNOT_GET_PLUGIN_STRINGS": "It was not possible to retrieve Gutenberg plugin strings",
+      "CANNOT_GET_WORDPRESS_STRINGS": "It was not possibile to retrieve WordPress core strings"
+    },
+    "FILTERS": {
+      "LOCALE_SELECTION": {
+        "LABEL": "Locale to be used:"
+      },
+      "SUB_PROJECTS": {
+        "ALL_VALUE": "All",
+        "LEGEND": "Project to show:"
+      },
+      "TEXT_FILTER": {
+        "LABEL": "Search text:",
+        "PLACEHOLDER": "Type the text here"
+      },
+      "TRANSLATION_STATUS": {
+        "ALL_VALUE": "All",
+        "LEGEND": "State to show:"
+      }
+    },
+    "LOADING": "Searching strings",
+    "RESULTS": {
+      "ORIGINAL_STRING": "Original string",
+      "PLUGIN_STRING": "From plugin",
+      "STATUS": {
+        "EQUAL": "Equal",
+        "DIFFERENT": "Different",
+        "NEW": "New"
+      },
+      "WP_CORE_STRING": "From Core",
+      "WP_CORE_PROJECT": "WP Core Project"
+    },
+    "WP_CORE_SUBPROJECTS_NAME": {
+      "ADMIN": "Administration",
+      "CC": "Continents & Cities",
+      "MAIN": "Main project",
+      "NETWORK": "Network Admin",
+      "NONE": "None"
+    }
+  },
+  "NAVBAR": {
+    "MENU": {
+      "GUTENBERG_STRING_COMPARATOR": "Gutenberg - String comparator"
+    }
+  },
+  "PAGE_NOT_FOUND": {
+    "HEADER": "Ops!",
+    "TEXT": "There is nothing here, did you type the correctly?",
+    "CALL_TO_ACTION": "Go to the homepage"
+  }
+}
