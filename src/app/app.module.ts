@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { AppRoutingModule } from './app-routing.module';
+import { APP_ROUTES } from './app.routing';
 import { AppComponent } from './app.component';
 import { TemplateModule } from './template/template.module';
+import { RouterModule } from '@angular/router';
 
 /**
  * Function required by NgxTranslate tool to retrieve translation files.
@@ -26,6 +27,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   imports: [
     BrowserModule,
     HttpClientModule,
+    TemplateModule,
     TranslateModule.forRoot({
       loader: {
         deps: [HttpClient],
@@ -33,8 +35,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
         useFactory: createTranslateLoader
       }
     }),
-    TemplateModule,
-    AppRoutingModule
+    RouterModule.forRoot(APP_ROUTES)
   ]
 })
 export class AppModule {}
