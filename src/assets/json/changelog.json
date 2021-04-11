@@ -7,6 +7,12 @@
         "date": "2021-04-11",
         "type": "FEATURE",
         "text": "Let user choose the language to use to retrieve Gutenberg strings"
+      },
+      {
+        "build": "21",
+        "date": "2021-04-11",
+        "type": "QUALITY",
+        "text": "Improved code quality"
       }
     ]
   },
