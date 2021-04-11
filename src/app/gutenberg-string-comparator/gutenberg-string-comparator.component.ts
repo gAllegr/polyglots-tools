@@ -33,7 +33,7 @@ export class GutenbergStringComparatorComponent implements OnInit {
    *
    * @returns {void} Nothing.
    */
-  public getStrings(): void {
-    this.stringRetrieverService.getStrings();
+  public getStrings(locale?: string): void {
+    this.stringRetrieverService.getStrings(locale);
   }
 }

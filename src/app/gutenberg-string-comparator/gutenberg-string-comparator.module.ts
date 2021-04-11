@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbAccordionModule,
+  NgbTypeaheadModule
+} from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import { GutenbergFiltersComponent } from './gutenberg-filters/gutenberg-filters.component';
@@ -24,6 +27,7 @@ import { FilterStringsPipe } from './pipe/filter-strings.pipe';
     CommonModule,
     ReactiveFormsModule,
     NgbAccordionModule,
+    NgbTypeaheadModule,
     VirtualScrollerModule,
     TranslateModule.forChild(),
     GutenbergStringComparatorRoutingModule

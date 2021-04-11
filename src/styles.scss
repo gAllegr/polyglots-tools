@@ -12,6 +12,13 @@
   padding: 0 !important;
 }
 
+// force NgBootstrap typeahead window style
+.typeahead-window {
+  max-height: 300px;
+  max-width: 88%;
+  overflow-y: scroll;
+}
+
 // Force content to fill the whole height
 .full-viewport {
   min-height: 100vh;

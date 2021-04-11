@@ -1,8 +1,17 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, throwError, zip } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  of,
+  Subject,
+  throwError,
+  zip
+} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { SessionStorageService } from 'src/app/core/services/session-storage/session-storage.service';
 import { WordPressSubProject } from 'src/app/gutenberg-string-comparator/models/wp-translate-projects.type';
 import { TranslateWpRoutesService } from 'src/app/gutenberg-string-comparator/services/translate-wp-routes/translate-wp-routes.service';
+import { Locale } from 'src/app/shared/models/locale.model';
 import { GutenbergTranslationComparison } from '../../models/gutenberg-translation-comparison.model';
 import { TranslationFromWpTranslate } from '../../models/translation-from-wp-translate.model';
 import { WpCoreNameProjectMapperService } from '../wp-core-name-project-mapper/wp-core-name-project-mapper.service';
@@ -20,8 +29,9 @@ export class StringRetrieverService {
 
   constructor(
     private readonly translateWpRoutesService: TranslateWpRoutesService,
-    private readonly wpCoreNameProjectMapper: WpCoreNameProjectMapperService
-  ) {}
+    private readonly wpCoreNameProjectMapper: WpCoreNameProjectMapperService,
+    private readonly sessionStorageService: SessionStorageService
+  ) { }
 
   /**
    * Get the Observable that keeps track of errors.
@@ -51,17 +61,68 @@ export class StringRetrieverService {
   }
 
   /**
+   * Manage the HTTP call to get locales from Translate page and save
+   * the result into the session storage.
+   *
+   * @returns {Observable<Locale[]>} An observable containing the locales
+   * or an empty array if some error occurs.
+   */
+  public getLocales(): Observable<Locale[]> {
+    return this.translateWpRoutesService.getWpTranslatePage().pipe(
+      map(htmlPage => {
+        const LOCALES = this.extractLocales(htmlPage).sort((a, b) =>
+          // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+          a.code > b.code ? 1 : -1
+        );
+        this.sessionStorageService.setLocales(LOCALES);
+        return LOCALES;
+      }),
+      catchError(() => {
+        this.sessionStorageService.removeLocales();
+        return of([] as Locale[]);
+      })
+    );
+  }
+
+  /**
+   * Get the locales listed into the page.
+   *
+   * @param htmlPage The htmlPage of Translate.
+   * @returns {Locale[]} The obtained list of locales.
+   */
+  private extractLocales(htmlPage: string): Locale[] {
+    let locales: Locale[] = [];
+    const FIRST_ELEMENT = 0;
+    Array.from(
+      new DOMParser()
+        .parseFromString(htmlPage, 'text/html')
+        .getElementsByClassName('locale')
+    ).forEach(localeTag => {
+      const LOCALE_LINK_ELEMENT = localeTag
+        .getElementsByClassName('native')
+        ?.item(FIRST_ELEMENT)
+        ?.getElementsByTagName('a')
+        .item(FIRST_ELEMENT);
+      const NAME = LOCALE_LINK_ELEMENT?.innerText;
+      const CODE = LOCALE_LINK_ELEMENT?.href.split('/')[4];
+      locales =
+        NAME && CODE ? [...locales, new Locale(NAME, CODE)] : [...locales];
+    });
+    return locales;
+  }
+
+  /**
    * Manage the HTTP calls to get strings related to Gutenberg plugin from projects on the Translate platform.
    *
    * @returns {void} Nothing.
    */
-  public getStrings(): void {
+  public getStrings(locale?: string): void {
     zip(
-      this.getGutenbergPluginStrings(),
-      this.getLastWordPressTranslations(),
-      this.getLastWordPressTranslations('/admin/'),
-      this.getLastWordPressTranslations('/admin/network/'),
-      this.getLastWordPressTranslations('/cc/')
+      this.getGutenbergPluginStrings(locale),
+      this.getLastWordPressTranslations(locale),
+      this.getLastWordPressTranslations(locale, '/admin/'),
+      this.getLastWordPressTranslations(locale, '/admin/network/'),
+      this.getLastWordPressTranslations(locale, '/cc/')
     )
       .pipe(
         tap(() => this._loading$.next(true)),
@@ -129,9 +190,11 @@ export class StringRetrieverService {
    *
    * @returns {Observable<TranslationFromWpTranslate>} The Observable that contains the Gutenberg strings from the plugin.
    */
-  private getGutenbergPluginStrings(): Observable<TranslationFromWpTranslate> {
+  private getGutenbergPluginStrings(
+    locale?: string
+  ): Observable<TranslationFromWpTranslate> {
     return this.translateWpRoutesService
-      .getPluginStrings('gutenberg')
+      .getPluginStrings('gutenberg', 'stable', locale)
       .pipe(
         catchError(() =>
           throwError(
@@ -149,10 +212,11 @@ export class StringRetrieverService {
    * @returns {Observable<TranslationFromWpTranslate>} The Observable that contains the WordPress Core strings.
    */
   private getLastWordPressTranslations(
+    locale?: string,
     subproject: WordPressSubProject = '/'
   ): Observable<TranslationFromWpTranslate> {
     return this.translateWpRoutesService
-      .getLastWordPressTranslations(subproject)
+      .getLastWordPressTranslations(subproject, locale)
       .pipe(
         catchError(() =>
           throwError(

@@ -15,10 +15,22 @@ import {
   providedIn: 'root'
 })
 export class TranslateWpRoutesService {
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) { }
 
   /**
-   * Perform the HTTP call to get the Gutetranslation strings of a specific plugin.
+   * Perform the HTTP call to get the HTML code of the WordPress main Translate page.
+   *
+   * @returns {Observable<string>} The HTML code of the page.
+   */
+  public getWpTranslatePage(): Observable<string> {
+    const URL = environment.hosts.wpTranslate;
+    return this.http.get(URL, {
+      responseType: 'text'
+    });
+  }
+
+  /**
+   * Perform the HTTP call to get the translation strings of a specific plugin.
    *
    * @param slug The slug of the plugin project.
    * @param project Either 'stable' or 'dev' to get rispectively the last stable version strings
@@ -27,10 +39,11 @@ export class TranslateWpRoutesService {
    */
   public getPluginStrings(
     slug: string,
-    project: PluginProject = 'stable'
+    project: PluginProject,
+    locale?: string
   ): Observable<TranslationFromWpTranslate> {
-    const LANGUAGE = 'it';
-    const URL = `${environment.hosts.wpTranslate}/projects/wp-plugins/${slug}/${project}/${LANGUAGE}/default/export-translations/?format=ngx`;
+    const LOCALE = locale ?? 'it';
+    const URL = `${environment.hosts.wpTranslate}/projects/wp-plugins/${slug}/${project}/${LOCALE}/default/export-translations/?format=ngx`;
 
     return this.http.get<TranslationFromWpTranslate>(
       `${environment.proxy}${URL}`
@@ -43,10 +56,11 @@ export class TranslateWpRoutesService {
    * @returns {Observable<TranslationFromWpTranslate>} The Observable that contains the WordPress Core strings.
    */
   public getLastWordPressTranslations(
-    subproject: WordPressSubProject = '/'
+    subproject: WordPressSubProject,
+    locale?: string
   ): Observable<TranslationFromWpTranslate> {
-    const LANGUAGE = 'it';
-    const URL = `${environment.hosts.wpTranslate}/projects/wp/dev${subproject}${LANGUAGE}/default/export-translations/?format=ngx`;
+    const LOCALE = locale ?? 'it';
+    const URL = `${environment.hosts.wpTranslate}/projects/wp/dev${subproject}${LOCALE}/default/export-translations/?format=ngx`;
 
     return this.http.get<TranslationFromWpTranslate>(
       `${environment.proxy}${URL}`

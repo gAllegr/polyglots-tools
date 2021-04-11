@@ -28,7 +28,10 @@
   <!-- Show results -->
   <ng-container *ngIf="gutenbergStrings$ | async as strings">
     <div class="col-12 col-lg-11 col-xl-10 mb-3 sticky-top">
-      <app-gutenberg-filters #filters></app-gutenberg-filters>
+      <app-gutenberg-filters
+        #filters
+        (localeUpdated)="getStrings($event.code)"
+      ></app-gutenberg-filters>
     </div>
     <div class="col-12 col-lg-11 col-xl-10">
       <app-gutenberg-results

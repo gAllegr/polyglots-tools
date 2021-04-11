@@ -1,5 +1,5 @@
 <form class="row justify-content-center px-4" [formGroup]="filters">
-  <div class="col-12 col-sm-6 form-group">
+  <div class="col-12 col-sm-4 form-group">
     <label for="search-for">
       {{ 'GUTENBERG_STRING_COMPARATOR.FILTERS.TEXT_FILTER.LABEL' | translate }}
     </label>
@@ -16,7 +16,7 @@
       formControlName="searchFor"
     />
   </div>
-  <fieldset class="col-12 col-sm-4 form-group">
+  <fieldset class="col-12 col-sm-3 form-group">
     <legend class="col-form-label pt-0">
       {{
         'GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.LEGEND'
@@ -38,7 +38,7 @@
       </option>
     </select>
   </fieldset>
-  <fieldset class="col-12 col-sm-6 form-group">
+  <fieldset class="col-12 col-sm-3 form-group">
     <legend class="col-form-label pt-0">
       {{
         'GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.LEGEND' | translate
@@ -59,4 +59,29 @@
       </option>
     </select>
   </fieldset>
+  <fieldset class="col-12 col-sm-3 form-group">
+    <div class="form-group">
+      <label for="typeahead-http">Search for the language:</label>
+      <input
+        id="language-search"
+        type="text"
+        class="form-control"
+        [placeholder]="usedLocale.code + ' - ' + usedLocale.name"
+        [ngbTypeahead]="searchLocales"
+        [focusFirst]="false"
+        [popupClass]="'typeahead-window'"
+        [resultTemplate]="languageTemplate"
+        [inputFormatter]="inputFormatter"
+        [editable]="false"
+        [showHint]="true"
+        (selectItem)="localeChanged($event.item)"
+      />
+    </div>
+  </fieldset>
+  <ng-template #languageTemplate let-locale="result" let-t="term">
+    <ngb-highlight
+      [result]="locale.code + ' - ' + locale.name"
+      [term]="t"
+    ></ngb-highlight>
+  </ng-template>
 </form>
