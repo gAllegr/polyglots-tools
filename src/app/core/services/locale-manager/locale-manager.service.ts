@@ -68,8 +68,15 @@ export class LocaleManagerService {
         .item(FIRST_ELEMENT);
       const NAME = LOCALE_LINK_ELEMENT?.innerText;
       const CODE = LOCALE_LINK_ELEMENT?.href.split('/')[CODE_INDEX];
+      const FULL_CODE = localeTag
+        .getElementsByClassName('code')
+        ?.item(FIRST_ELEMENT)
+        ?.getElementsByTagName('a')
+        .item(FIRST_ELEMENT)?.innerText;
       locales =
-        NAME && CODE ? [...locales, new Locale(NAME, CODE)] : [...locales];
+        NAME && CODE && FULL_CODE
+          ? [...locales, new Locale(NAME, CODE, FULL_CODE)]
+          : [...locales];
     });
     return locales;
   }

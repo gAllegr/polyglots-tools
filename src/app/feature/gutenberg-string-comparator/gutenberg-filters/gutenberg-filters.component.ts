@@ -34,7 +34,7 @@ export class GutenbergFiltersComponent {
   public translationStatus = TRANSLATION_STATUS;
   public translationStatusAllValue =
     'GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.ALL_VALUE';
-  public usedLocale: Locale = { code: 'it-IT', name: 'Italiano' };
+  public usedLocale: Locale = new Locale('Italiano', 'it', 'it-IT');
 
   constructor(
     private readonly formBuilder: FormBuilder,

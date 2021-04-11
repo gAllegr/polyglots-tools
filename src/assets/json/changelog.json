@@ -3,16 +3,22 @@
     "version": "0.4.0",
     "comments": [
       {
-        "build": "21",
+        "build": "22",
         "date": "2021-04-11",
-        "type": "FEATURE",
-        "text": "Let user choose the language to use to retrieve Gutenberg strings"
+        "type": "BUGFIX",
+        "text": "Retrieve full code for locales"
       },
       {
         "build": "21",
         "date": "2021-04-11",
         "type": "QUALITY",
         "text": "Improved code quality"
+      },
+      {
+        "build": "21",
+        "date": "2021-04-11",
+        "type": "FEATURE",
+        "text": "Let user choose the language to use to retrieve Gutenberg strings"
       }
     ]
   },
