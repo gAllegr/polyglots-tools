@@ -9,12 +9,14 @@ import {
   map,
   switchMap
 } from 'rxjs/operators';
+import { LocalStorageService } from 'src/app/core/services/local-storage/local-storage.service';
 import { LocaleManagerService } from 'src/app/core/services/locale-manager/locale-manager.service';
 import {
   StringFilters,
   TRANSLATION_STATUS
 } from 'src/app/shared/models/gutenberg-translation-comparison.model';
 import { Locale } from 'src/app/shared/models/locale.model';
+import { environment } from 'src/environments/environment';
 import { WP_CORE_SUBPROJECTS } from '../../../shared/models/wp-translate-projects.model';
 
 /**
@@ -38,8 +40,12 @@ export class GutenbergFiltersComponent {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly localeManagerService: LocaleManagerService
+    private readonly localeManagerService: LocaleManagerService,
+    private readonly localStorageService: LocalStorageService
   ) {
+    this.usedLocale =
+      this.localStorageService.getSettings()?.wpLocale ??
+      (environment.defaultLocale as Locale);
     this.filters = this.formBuilder.group({
       searchFor: this.formBuilder.control(''),
       status: this.formBuilder.control(

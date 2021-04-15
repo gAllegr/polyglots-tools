@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Locale } from 'src/app/shared/models/locale.model';
 import { environment } from 'src/environments/environment';
 import {
   PluginProject,
@@ -15,6 +16,8 @@ import {
   providedIn: 'root'
 })
 export class TranslateWpRoutesService {
+  private readonly _defaultLocale = (environment.defaultLocale as Locale).code;
+
   constructor(private readonly http: HttpClient) {}
 
   /**
@@ -44,7 +47,7 @@ export class TranslateWpRoutesService {
     project: PluginProject,
     locale?: string
   ): Observable<TranslationFromWpTranslate> {
-    const LOCALE = locale ?? 'it';
+    const LOCALE = locale ?? this._defaultLocale;
     const URL = `${environment.hosts.wpTranslate}/projects/wp-plugins/${slug}/${project}/${LOCALE}/default/export-translations/?format=ngx`;
 
     return this.http.get<TranslationFromWpTranslate>(
@@ -64,7 +67,7 @@ export class TranslateWpRoutesService {
     subproject: WordPressSubProject,
     locale?: string
   ): Observable<TranslationFromWpTranslate> {
-    const LOCALE = locale ?? 'it';
+    const LOCALE = locale ?? this._defaultLocale;
     const URL = `${environment.hosts.wpTranslate}/projects/wp/dev${subproject}${LOCALE}/default/export-translations/?format=ngx`;
 
     return this.http.get<TranslationFromWpTranslate>(

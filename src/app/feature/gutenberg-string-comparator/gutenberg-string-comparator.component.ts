@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Subject, throwError, zip } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { LocalStorageService } from 'src/app/core/services/local-storage/local-storage.service';
 import { GutenbergTranslationComparison } from '../../shared/models/gutenberg-translation-comparison.model';
 import { StringRetrieverService } from './services/string-retriever/string-retriever.service';
 
@@ -18,12 +19,13 @@ export class GutenbergStringComparatorComponent implements OnInit {
   public loading$ = new BehaviorSubject<boolean>(true);
 
   constructor(
-    private readonly stringRetrieverService: StringRetrieverService
+    private readonly stringRetrieverService: StringRetrieverService,
+    private readonly localStorageService: LocalStorageService
   ) {}
 
   // eslint-disable-next-line jsdoc/require-jsdoc
   public ngOnInit(): void {
-    this.getStrings();
+    this.getStrings(this.localStorageService.getSettings()?.wpLocale?.code);
   }
 
   /**
