@@ -6,6 +6,12 @@
         "build": "23",
         "date": "2021-04-15",
         "type": "FEATURE",
+        "text": "Added copy to clipboard functionality"
+      },
+      {
+        "build": "23",
+        "date": "2021-04-15",
+        "type": "FEATURE",
         "text": "Managed app behaviour after locale changed in settings"
       },
       {

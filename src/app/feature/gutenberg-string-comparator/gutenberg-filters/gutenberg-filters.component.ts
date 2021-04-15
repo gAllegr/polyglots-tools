@@ -36,7 +36,7 @@ export class GutenbergFiltersComponent {
   public translationStatus = TRANSLATION_STATUS;
   public translationStatusAllValue =
     'GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.ALL_VALUE';
-  public usedLocale: Locale = new Locale('Italiano', 'it', 'it-IT');
+  public usedLocale: Locale;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -47,15 +47,9 @@ export class GutenbergFiltersComponent {
       this.localStorageService.getSettings()?.wpLocale ??
       (environment.defaultLocale as Locale);
     this.filters = this.formBuilder.group({
-      searchFor: this.formBuilder.control(''),
-      status: this.formBuilder.control(
-        this.translationStatusAllValue,
-        Validators.required
-      ),
-      subproject: this.formBuilder.control(
-        this.subProjectAllValue,
-        Validators.required
-      )
+      searchFor: '',
+      status: [this.translationStatusAllValue, Validators.required],
+      subproject: [this.subProjectAllValue, Validators.required]
     });
 
     this.filters.valueChanges

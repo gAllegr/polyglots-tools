@@ -7,13 +7,14 @@ import {
   NgbTypeaheadModule
 } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
+import { ClipboardModule } from 'ngx-clipboard';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
+import { GutenbergComparatorServicesModule } from './gutenberg-comparator-services.module';
 import { GutenbergFiltersComponent } from './gutenberg-filters/gutenberg-filters.component';
 import { GutenbergResultsComponent } from './gutenberg-results/gutenberg-results.component';
-import { COMPARATOR_ROUTES } from './gutenberg-string-comparator.routing';
 import { GutenbergStringComparatorComponent } from './gutenberg-string-comparator.component';
+import { COMPARATOR_ROUTES } from './gutenberg-string-comparator.routing';
 import { FilterStringsPipe } from './pipe/filter-strings.pipe';
-import { GutenbergComparatorServicesModule } from './gutenberg-comparator-services.module';
 
 /**
  * Module for the Gutenberg string comparator tool.
@@ -31,6 +32,7 @@ import { GutenbergComparatorServicesModule } from './gutenberg-comparator-servic
     NgbAccordionModule,
     NgbTypeaheadModule,
     VirtualScrollerModule,
+    ClipboardModule,
     GutenbergComparatorServicesModule,
     TranslateModule.forChild(),
     RouterModule.forChild(COMPARATOR_ROUTES)

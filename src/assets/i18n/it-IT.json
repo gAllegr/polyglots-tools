@@ -28,6 +28,8 @@
     },
     "LOADING": "Ricerca delle stringhe in corso",
     "RESULTS": {
+      "COPY_FROM_CORE": "Copia stringa dal Core",
+      "COPY_FROM_PLUGIN": "Copia stringa da Gutenberg",
       "ORIGINAL_STRING": "Stringa originale",
       "PLUGIN_STRING": "Dal plugin",
       "STATUS": {

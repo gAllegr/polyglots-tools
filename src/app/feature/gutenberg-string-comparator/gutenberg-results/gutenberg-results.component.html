@@ -13,7 +13,6 @@
         <div
           class="d-flex align-items-center justify-content-between panel-heading"
           (focus)="acc.toggle('string-' + index)"
-          (blur)="acc.collapse('string-' + index)"
           (keydown.enter)="acc.toggle('string-' + index)"
           tabindex="0"
         >
@@ -55,9 +54,18 @@
                   | translate
               }}:
             </p>
-            <span class="font-italic">
+            <p class="font-italic">
               {{ string.wpCore }}
-            </span>
+            </p>
+            <button
+              class="btn btn-outline-primary btn-sm"
+              ngxClipboard
+              [cbContent]="string.wpCore"
+            >
+              {{
+                'GUTENBERG_STRING_COMPARATOR.RESULTS.COPY_FROM_CORE' | translate
+              }}
+            </button>
           </div>
           <div class="col-6">
             <p>
@@ -65,9 +73,19 @@
                 'GUTENBERG_STRING_COMPARATOR.RESULTS.PLUGIN_STRING' | translate
               }}:
             </p>
-            <span class="font-italic">
+            <p class="font-italic">
               {{ string.gutenberg }}
-            </span>
+            </p>
+            <button
+              class="btn btn-outline-primary btn-sm"
+              ngxClipboard
+              [cbContent]="string.gutenberg"
+            >
+              {{
+                'GUTENBERG_STRING_COMPARATOR.RESULTS.COPY_FROM_PLUGIN'
+                  | translate
+              }}
+            </button>
           </div>
         </div>
       </ng-template>
