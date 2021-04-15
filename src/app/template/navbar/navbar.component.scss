@@ -7,3 +7,10 @@
   margin: auto 1rem !important;
   transform: scale(1.05);
 }
+
+.navbar-nav .nav-item:not(:last-child)::after {
+  border-left: 1px solid var(--light);
+  content: '';
+  height: 100%;
+  margin: 0 5px;
+}

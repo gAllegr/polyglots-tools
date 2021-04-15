@@ -29,6 +29,15 @@
           {{ 'NAVBAR.MENU.GUTENBERG_STRING_COMPARATOR' | translate }}
         </a>
       </li>
+      <li class="nav-item" (click)="toogleMenuCollapse()">
+        <a
+          class="m-0 py-2 text-light menu-link"
+          [routerLink]="['/settings']"
+          routerLinkActive="router-link-active"
+        >
+          &#9881; {{ 'NAVBAR.MENU.SETTINGS' | translate }}
+        </a>
+      </li>
     </ul>
   </div>
 </nav>

@@ -48,12 +48,32 @@
   },
   "NAVBAR": {
     "MENU": {
-      "GUTENBERG_STRING_COMPARATOR": "Gutenberg - Comparatore di stringhe"
+      "GUTENBERG_STRING_COMPARATOR": "Gutenberg - Comparatore di stringhe",
+      "SETTINGS": "Impostazioni"
     }
   },
   "PAGE_NOT_FOUND": {
     "HEADER": "Ops!",
     "TEXT": "Qui non c'è nulla, sicuro di aver digitato l'indirizzo corretto?",
     "CALL_TO_ACTION": "Torna alla pagina iniziale"
+  },
+  "SETTINGS": {
+    "TITLE": "Impostazioni",
+    "DISCLAIMER": {
+      "DELETE_CTA": "Cliccando qui",
+      "DELETE_PARAGRAPH": "I dati sono salvati localmente e possono essere cancellati velocemente",
+      "NOTICE": "Nota!",
+      "PARAGRAPH": "Questa applicazione non recupera e/o utilizza nessun dato legato all'utente. Gli unici dati memorizzati ed utilizzati sono quelli definiti di seguito."
+    },
+    "FIELDS": {
+      "LANGUAGE": {
+        "LEGEND": "Lingua",
+        "LEGEND_SMALL": "(da usare nell'applicazione)"
+      },
+      "LOCALE": {
+        "LEGEND": "Locale",
+        "LEGEND_SMALL": "(da usare per recuperare le stringhe da Translate)"
+      }
+    }
   }
 }

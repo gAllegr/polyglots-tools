@@ -1,0 +1,61 @@
+<div class="row justify-content-center mt-4">
+  <div class="col-12 text-center">
+    <h1>{{ 'SETTINGS.TITLE' | translate }}</h1>
+  </div>
+  <div class="col-10 alert alert-info">
+    <p class="m-0">
+      <span class="font-weight-bold">{{
+        'SETTINGS.DISCLAIMER.NOTICE' | translate
+      }}</span>
+      {{ 'SETTINGS.DISCLAIMER.PARAGRAPH' | translate }}
+    </p>
+    <p class="m-0">
+      {{ 'SETTINGS.DISCLAIMER.DELETE_PARAGRAPH' | translate }}
+      <a class="btn btn-sm btn-outline-info" (click)="onDeleteSettings()">{{
+        'SETTINGS.DISCLAIMER.DELETE_CTA' | translate | lowercase
+      }}</a
+      >.
+    </p>
+  </div>
+</div>
+<form class="row justify-content-center mt-3" [formGroup]="settings">
+  <fieldset class="col-1 col-sm-5 form-group">
+    <legend class="col-form-label pt-0">
+      {{ 'SETTINGS.FIELDS.LANGUAGE.LEGEND' | translate }}
+      <small>{{ 'SETTINGS.FIELDS.LANGUAGE.LEGEND_SMALL' | translate }}</small>
+    </legend>
+    <select
+      name="app-language"
+      id="app-language"
+      class="custom-select custom-select-sm"
+      formControlName="appLanguage"
+    >
+      <option *ngFor="let language of appLanguages" [value]="language.code">
+        {{ language.label }}
+      </option>
+    </select>
+  </fieldset>
+  <fieldset class="col-12 col-sm-5 form-group">
+    <legend class="col-form-label pt-0">
+      {{ 'SETTINGS.FIELDS.LOCALE.LEGEND' | translate }}
+      <small>{{ 'SETTINGS.FIELDS.LOCALE.LEGEND_SMALL' | translate }}</small>
+    </legend>
+    <select
+      name="locale"
+      id="locale"
+      class="custom-select custom-select-sm"
+      formControlName="wpLocale"
+      [compareWith]="compareLocales"
+    >
+      <option
+        *ngFor="let locale of locales"
+        [ngValue]="locale"
+        [attr.selected]="
+          locale.code === settings.value.wpLocale?.code ? true : undefined
+        "
+      >
+        {{ locale.code }} - {{ locale.name }}
+      </option>
+    </select>
+  </fieldset>
+</form>

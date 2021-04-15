@@ -17,6 +17,11 @@ export const APP_ROUTES: Routes = [
     path: 'changelog'
   },
   {
+    loadChildren: () =>
+      import('./feature/settings/settings.module').then(m => m.SettingsModule),
+    path: 'settings'
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'gutenberg-string-comparator'
