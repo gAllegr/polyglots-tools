@@ -3,6 +3,18 @@
     "version": "0.4.0",
     "comments": [
       {
+        "build": "23",
+        "date": "2021-04-15",
+        "type": "FEATURE",
+        "text": "Managed app translation update after language change"
+      },
+      {
+        "build": "23",
+        "date": "2021-04-15",
+        "type": "FEATURE",
+        "text": "Created user settings page"
+      },
+      {
         "build": "22",
         "date": "2021-04-11",
         "type": "FEATURE",

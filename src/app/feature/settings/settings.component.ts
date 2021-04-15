@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { filter } from 'rxjs/operators';
 import { LocalStorageService } from 'src/app/core/services/local-storage/local-storage.service';
+import { TranslationHelperService } from 'src/app/core/services/translation-helper/translation-helper.service';
 import { LANGUAGES } from 'src/app/shared/models/languages.const';
 import { Locale } from 'src/app/shared/models/locale.model';
 import { Settings } from 'src/app/shared/models/settings.model';
@@ -22,7 +22,8 @@ export class SettingsComponent implements OnInit {
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly formBuilder: FormBuilder,
-    private readonly localStorageService: LocalStorageService
+    private readonly localStorageService: LocalStorageService,
+    private readonly translateHelperService: TranslationHelperService
   ) {}
 
   // eslint-disable-next-line jsdoc/require-jsdoc
@@ -66,10 +67,9 @@ export class SettingsComponent implements OnInit {
       appLanguage: [USER_SETTINGS?.appLanguage],
       wpLocale: [USER_SETTINGS?.wpLocale]
     });
-    this.settings.valueChanges
-      .pipe(filter(() => this.settings.valid))
-      .subscribe((selection: Settings) =>
-        this.localStorageService.setSettings(selection)
-      );
+    this.settings.valueChanges.subscribe((selection: Settings) => {
+      this.localStorageService.setSettings(selection);
+      this.translateHelperService.changeLanguage(selection.appLanguage);
+    });
   }
 }
