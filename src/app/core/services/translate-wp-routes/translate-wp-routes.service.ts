@@ -27,7 +27,7 @@ export class TranslateWpRoutesService {
    */
   public getWpTranslatePage(): Observable<string> {
     const URL = environment.hosts.wpTranslate;
-    return this.http.get(URL, {
+    return this.http.get(`${environment.proxy}${URL}`, {
       responseType: 'text'
     });
   }
