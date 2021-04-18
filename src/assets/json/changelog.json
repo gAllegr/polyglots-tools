@@ -1,5 +1,16 @@
 [
   {
+    "version": "0.4.1",
+    "comments": [
+      {
+        "build": "24",
+        "date": "2021-04-18",
+        "type": "BUGFIX",
+        "text": "Fixed strings not retrieved if 404 occurs"
+      }
+    ]
+  },
+  {
     "version": "0.4.0",
     "comments": [
       {

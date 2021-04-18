@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Locale } from 'src/app/shared/models/locale.model';
 import { environment } from 'src/environments/environment';
 import {
@@ -56,7 +57,9 @@ export class TranslateWpRoutesService {
   }
 
   /**
-   * Perform the HTTP call to get the last WordPress Core plugin strings.
+   * Perform the HTTP call to get the last WordPress Core plugin strings. If the returned error is 404,
+   * it simply means that there are no strings related to the subproject for that locale, so the application
+   * will return an empty array.
    *
    * @param subproject The subproject from which retrieve the strings.
    * @param locale The code of the locale from which retrieve the strings. If not provided,
@@ -70,8 +73,13 @@ export class TranslateWpRoutesService {
     const LOCALE = locale ?? this._defaultLocale;
     const URL = `${environment.hosts.wpTranslate}/projects/wp/dev${subproject}${LOCALE}/default/export-translations/?format=ngx`;
 
-    return this.http.get<TranslationFromWpTranslate>(
-      `${environment.proxy}${URL}`
-    );
+    return this.http
+      .get<TranslationFromWpTranslate>(`${environment.proxy}${URL}`)
+      .pipe(
+        catchError((errorResponse: HttpErrorResponse) =>
+          // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+          errorResponse.status === 404 ? of({}) : throwError(new Error())
+        )
+      );
   }
 }
