@@ -11,19 +11,23 @@
     },
     "FILTERS": {
       "LOCALE_SELECTION": {
-        "LABEL": "Locale to be used:"
+        "LABEL": "Locale to be used:",
+        "LABEL_MOBILE": "Locale:"
       },
       "SUB_PROJECTS": {
         "ALL_VALUE": "All",
-        "LEGEND": "Project to show:"
+        "LEGEND": "Project to show:",
+        "LEGEND_MOBILE": "Project:"
       },
       "TEXT_FILTER": {
         "LABEL": "Search text:",
-        "PLACEHOLDER": "Type the text here"
+        "LABEL_MOBILE": "Search text:",
+        "PLACEHOLDER": "Type text"
       },
       "TRANSLATION_STATUS": {
         "ALL_VALUE": "All",
-        "LEGEND": "State to show:"
+        "LEGEND": "Status to show:",
+        "LEGEND_MOBILE": "Status:"
       }
     },
     "LOADING": "Searching strings",
@@ -51,6 +55,7 @@
   "NAVBAR": {
     "MENU": {
       "GUTENBERG_STRING_COMPARATOR": "Gutenberg - String comparator",
+      "GUTENBERG_STRING_COMPARATOR_MOBILE": "Gutenberg - Comparator",
       "SETTINGS": "Settings"
     }
   },

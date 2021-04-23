@@ -1,5 +1,16 @@
 [
   {
+    "version": "0.4.2",
+    "comments": [
+      {
+        "build": "25",
+        "date": "2021-04-23",
+        "type": "BUGFIX",
+        "text": "Small improvements on mobile visualization"
+      }
+    ]
+  },
+  {
     "version": "0.4.1",
     "comments": [
       {

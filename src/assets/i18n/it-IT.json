@@ -11,19 +11,23 @@
     },
     "FILTERS": {
       "LOCALE_SELECTION": {
-        "LABEL": "Locale da usare:"
+        "LABEL": "Locale da usare:",
+        "LABEL_MOBILE": "Locale:"
       },
       "SUB_PROJECTS": {
         "ALL_VALUE": "Tutti",
-        "LEGEND": "Quale progetto mostrare:"
+        "LEGEND": "Quale progetto mostrare:",
+        "LEGEND_MOBILE": "Progetto:"
       },
       "TEXT_FILTER": {
         "LABEL": "Cerca un testo specifico:",
-        "PLACEHOLDER": "Digita la stringa da cercare"
+        "LABEL_MOBILE": "Cerca un testo:",
+        "PLACEHOLDER": "Digita la stringa"
       },
       "TRANSLATION_STATUS": {
         "ALL_VALUE": "Tutti",
-        "LEGEND": "Quale stato mostrare:"
+        "LEGEND": "Quale stato mostrare:",
+        "LEGEND_MOBILE": "Stato:"
       }
     },
     "LOADING": "Ricerca delle stringhe in corso",
@@ -51,6 +55,7 @@
   "NAVBAR": {
     "MENU": {
       "GUTENBERG_STRING_COMPARATOR": "Gutenberg - Comparatore di stringhe",
+      "GUTENBERG_STRING_COMPARATOR_MOBILE": "Gutenberg - Comparatore",
       "SETTINGS": "Impostazioni"
     }
   },

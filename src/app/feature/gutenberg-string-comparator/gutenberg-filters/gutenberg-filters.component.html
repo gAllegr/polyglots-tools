@@ -1,7 +1,13 @@
-<form class="row justify-content-center px-4" [formGroup]="filters">
-  <div class="col-12 col-sm-3 form-group">
-    <label for="search-for">
+<form class="row justify-content-center" [formGroup]="filters">
+  <div class="col-6 col-sm-3 form-group">
+    <label for="search-for" class="d-none d-sm-none d-md-none d-lg-block">
       {{ 'GUTENBERG_STRING_COMPARATOR.FILTERS.TEXT_FILTER.LABEL' | translate }}
+    </label>
+    <label for="search-for" class="d-md-block d-lg-none">
+      {{
+        'GUTENBERG_STRING_COMPARATOR.FILTERS.TEXT_FILTER.LABEL_MOBILE'
+          | translate
+      }}
     </label>
     <input
       type="text"
@@ -16,52 +22,13 @@
       formControlName="searchFor"
     />
   </div>
-  <fieldset class="col-12 col-sm-3 form-group">
-    <legend class="col-form-label pt-0">
-      {{
-        'GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.LEGEND'
-          | translate
-      }}
-    </legend>
-    <select class="custom-select custom-select-sm" formControlName="status">
-      <option
-        value="GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.ALL_VALUE"
-        selected
-      >
-        {{
-          'GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.ALL_VALUE'
-            | translate
-        }}
-      </option>
-      <option *ngFor="let status of translationStatus" [value]="status">
-        {{ status | translate }}
-      </option>
-    </select>
-  </fieldset>
-  <fieldset class="col-12 col-sm-3 form-group">
-    <legend class="col-form-label pt-0">
-      {{
-        'GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.LEGEND' | translate
-      }}
-    </legend>
-    <select class="custom-select custom-select-sm" formControlName="subproject">
-      <option
-        value="GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.ALL_VALUE"
-        selected
-      >
-        {{
-          'GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.ALL_VALUE'
-            | translate
-        }}
-      </option>
-      <option *ngFor="let project of subProjectSelection" [value]="project">
-        {{ project | translate }}
-      </option>
-    </select>
-  </fieldset>
-  <div class="col-12 col-sm-3 form-group">
-    <label for="typeahead-http">{{
+  <div class="col-6 col-sm-3 form-group">
+    <label for="typeahead-http" class="d-none d-sm-none d-md-block">{{
       'GUTENBERG_STRING_COMPARATOR.FILTERS.LOCALE_SELECTION.LABEL' | translate
+    }}</label>
+    <label for="typeahead-http" class="d-block d-md-none">{{
+      'GUTENBERG_STRING_COMPARATOR.FILTERS.LOCALE_SELECTION.LABEL_MOBILE'
+        | translate
     }}</label>
     <input
       id="language-search"
@@ -84,4 +51,59 @@
       [term]="t"
     ></ngb-highlight>
   </ng-template>
+  <fieldset class="col-6 col-sm-3 form-group">
+    <legend class="col-form-label pt-0 d-none d-sm-none d-md-block">
+      {{
+        'GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.LEGEND'
+          | translate
+      }}
+    </legend>
+    <legend class="col-form-label pt-0 d-block d-md-none">
+      {{
+        'GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.LEGEND_MOBILE'
+          | translate
+      }}
+    </legend>
+    <select class="custom-select custom-select-sm" formControlName="status">
+      <option
+        value="GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.ALL_VALUE"
+        selected
+      >
+        {{
+          'GUTENBERG_STRING_COMPARATOR.FILTERS.TRANSLATION_STATUS.ALL_VALUE'
+            | translate
+        }}
+      </option>
+      <option *ngFor="let status of translationStatus" [value]="status">
+        {{ status | translate }}
+      </option>
+    </select>
+  </fieldset>
+  <fieldset class="col-6 col-sm-3 form-group">
+    <legend class="col-form-label pt-0 d-none d-sm-none d-md-none d-lg-block">
+      {{
+        'GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.LEGEND' | translate
+      }}
+    </legend>
+    <legend class="col-form-label pt-0 d-md-block d-lg-none">
+      {{
+        'GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.LEGEND_MOBILE'
+          | translate
+      }}
+    </legend>
+    <select class="custom-select custom-select-sm" formControlName="subproject">
+      <option
+        value="GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.ALL_VALUE"
+        selected
+      >
+        {{
+          'GUTENBERG_STRING_COMPARATOR.FILTERS.SUB_PROJECTS.ALL_VALUE'
+            | translate
+        }}
+      </option>
+      <option *ngFor="let project of subProjectSelection" [value]="project">
+        {{ project | translate }}
+      </option>
+    </select>
+  </fieldset>
 </form>
