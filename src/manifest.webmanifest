@@ -1,8 +1,8 @@
 {
-  "name": "polyglots-tools",
-  "short_name": "polyglots-tools",
+  "name": "Polyglots Tools",
+  "short_name": "Polyglots Tools",
   "theme_color": "#007bff",
-  "background_color": "#fafafa",
+  "background_color": "#ffffff",
   "display": "standalone",
   "scope": "./",
   "start_url": "./index.html",
