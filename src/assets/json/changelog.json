@@ -3,10 +3,16 @@
     "version": "0.4.2",
     "comments": [
       {
+        "build": "27",
+        "date": "2021-04-25",
+        "type": "BUGFIX",
+        "text": "Fix language's json files cache on PWA"
+      },
+      {
         "build": "26",
         "date": "2021-04-25",
         "type": "CONFIG",
-        "text": "Testing basic PWA"
+        "text": "Installing basic PWA"
       },
       {
         "build": "25",
