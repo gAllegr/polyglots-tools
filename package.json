@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://gitlab.com/gallegr-angular-projects/polyglots-tools/-/issues"
   },
-  "license": "GPL-2.0-or-later",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

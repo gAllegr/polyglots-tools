@@ -6,6 +6,12 @@
         "build": "28",
         "date": "2021-04-25",
         "type": "CONFIG",
+        "text": "Changed license to MIT and added LICENSE.md file"
+      },
+      {
+        "build": "28",
+        "date": "2021-04-25",
+        "type": "CONFIG",
         "text": "Updated pwa app name"
       },
       {
