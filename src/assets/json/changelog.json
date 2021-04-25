@@ -3,6 +3,12 @@
     "version": "0.4.2",
     "comments": [
       {
+        "build": "29",
+        "date": "2021-04-25",
+        "type": "FEATURE",
+        "text": "Alert user if a new version is available"
+      },
+      {
         "build": "28",
         "date": "2021-04-25",
         "type": "CONFIG",

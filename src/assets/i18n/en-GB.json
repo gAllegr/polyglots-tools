@@ -82,5 +82,10 @@
         "LEGEND_SMALL": "(to be used to retrieve strings from Translate)"
       }
     }
+  },
+  "UPDATE_AVAILABLE_MODAL": {
+    "NO_BUTTON": "No, later",
+    "OK_BUTTON": "Yes, now!",
+    "TEXT": "An update is available. Do you want to download it now?"
   }
 }

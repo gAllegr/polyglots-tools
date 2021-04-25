@@ -1,14 +1,15 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { APP_ROUTES } from './app.routing';
-import { AppComponent } from './app.component';
-import { TemplateModule } from './template/template.module';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment';
+import { AppComponent } from './app.component';
+import { APP_ROUTES } from './app.routing';
+import { SharedModule } from './shared/shared.module';
+import { TemplateModule } from './template/template.module';
 
 /**
  * Function required by NgxTranslate tool to retrieve translation files.
@@ -30,6 +31,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     BrowserModule,
     HttpClientModule,
     TemplateModule,
+    SharedModule,
     TranslateModule.forRoot({
       loader: {
         deps: [HttpClient],

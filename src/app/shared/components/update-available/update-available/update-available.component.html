@@ -1,0 +1,22 @@
+<div class="modal-body">
+  <p class="m-0 text-center">
+    {{ 'UPDATE_AVAILABLE_MODAL.TEXT' | translate }}
+  </p>
+</div>
+<div class="modal-footer d-flex justify-content-around">
+  <button
+    type="button"
+    ngbAutofocus
+    class="btn btn-sm btn-outline-primary"
+    (click)="confirm()"
+  >
+    {{ 'UPDATE_AVAILABLE_MODAL.OK_BUTTON' | translate }}
+  </button>
+  <button
+    type="button"
+    class="btn btn-sm btn-outline-danger"
+    (click)="dismiss()"
+  >
+    {{ 'UPDATE_AVAILABLE_MODAL.NO_BUTTON' | translate }}
+  </button>
+</div>

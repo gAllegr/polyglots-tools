@@ -82,5 +82,10 @@
         "LEGEND_SMALL": "(da usare per recuperare le stringhe da Translate)"
       }
     }
+  },
+  "UPDATE_AVAILABLE_MODAL": {
+    "NO_BUTTON": "No, dopo",
+    "OK_BUTTON": "Si, ora!",
+    "TEXT": "È disponibile un aggiornamento. Vuoi scaricarlo ora?"
   }
 }
