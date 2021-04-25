@@ -1,6 +1,6 @@
 {
   "name": "polyglots-tools",
-  "version": "0.4.2-25",
+  "version": "0.4.2-26",
   "author": {
     "email": "allegretta92@hotmail.it",
     "name": "G. Allegretta"
@@ -26,8 +26,7 @@
     "prettify:check": "npx prettier --check .",
     "lint:ts": "npx ng lint",
     "lint:style": "npx stylelint 'src/**/*.(css|scss)'",
-    "lint:dev": "npm run prettify:check && npm run lint:style && npm run lint:ts && npm run tsc",
-    "tsc": "rm -rf dist/out-tsc && tsc",
+    "lint:dev": "npm run prettify:check && npm run lint:style && npm run lint:ts",
     "docs": "npm run docs:compodoc && npm run docs:bundle-info",
     "docs:compodoc": "compodoc",
     "docs:bundle-info": "webpack-bundle-analyzer dist/polyglots-tools/stats.json -m static -r docs/bundle-info/index.html",

@@ -40,9 +40,6 @@ jobs:
       - name: TS Linting
         run: npm run lint:ts
 
-      - name: TS Compiler Check
-        run: npm run tsc
-
   Docker_build:
     runs-on: ubuntu-latest
     needs: Code_quality

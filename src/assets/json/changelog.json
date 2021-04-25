@@ -3,6 +3,12 @@
     "version": "0.4.2",
     "comments": [
       {
+        "build": "26",
+        "date": "2021-04-25",
+        "type": "CONFIG",
+        "text": "Testing basic PWA"
+      },
+      {
         "build": "25",
         "date": "2021-04-23",
         "type": "BUGFIX",
