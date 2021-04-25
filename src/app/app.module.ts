@@ -7,6 +7,8 @@ import { APP_ROUTES } from './app.routing';
 import { AppComponent } from './app.component';
 import { TemplateModule } from './template/template.module';
 import { RouterModule } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 /**
  * Function required by NgxTranslate tool to retrieve translation files.
@@ -35,7 +37,13 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
         useFactory: createTranslateLoader
       }
     }),
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ]
 })
 export class AppModule {}
