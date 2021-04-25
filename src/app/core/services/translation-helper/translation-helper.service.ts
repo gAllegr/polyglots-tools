@@ -53,7 +53,13 @@ export class TranslationHelperService {
    */
   public changeLanguage(language?: string): void {
     const LANGUAGE_TO_USE = language ?? this.getLanguageToUse();
-    this.translate.use(LANGUAGE_TO_USE);
+    this.translate
+      .use(`${LANGUAGE_TO_USE}-${environment.app_version}`)
+      .subscribe(
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        () => {},
+        () => this.translate.use(LANGUAGE_TO_USE)
+      );
   }
 
   /**
