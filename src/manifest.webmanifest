@@ -1,11 +1,11 @@
 {
   "name": "polyglots-tools",
   "short_name": "polyglots-tools",
-  "theme_color": "#1976d2",
+  "theme_color": "#007bff",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
-  "start_url": "./",
+  "start_url": "./index.html",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
