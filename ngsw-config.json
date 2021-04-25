@@ -28,8 +28,7 @@
     },
     {
       "name": "translate",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
+      "installMode": "prefetch",
       "resources": {
         "files": [
           "/assets/i18n/*.json"
