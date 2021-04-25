@@ -3,6 +3,12 @@
     "version": "0.4.2",
     "comments": [
       {
+        "build": "28",
+        "date": "2021-04-25",
+        "type": "CONFIG",
+        "text": "Updated favicon and app icons"
+      },
+      {
         "build": "27",
         "date": "2021-04-25",
         "type": "BUGFIX",
