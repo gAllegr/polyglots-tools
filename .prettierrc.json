@@ -3,7 +3,7 @@
   "bracketSpacing": true,
   "singleQuote": true,
   "trailingComma": "none",
-  "endOfLine": "crlf",
+  "endOfLine": "lf",
   "overrides": [
     {
       "files": "**/*.json",
