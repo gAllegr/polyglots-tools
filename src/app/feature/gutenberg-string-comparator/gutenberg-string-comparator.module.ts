@@ -1,13 +1,14 @@
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {
   NgbAccordionModule,
+  NgbTooltipModule,
   NgbTypeaheadModule
 } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
-import { ClipboardModule } from 'ngx-clipboard';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import { GutenbergComparatorServicesModule } from './gutenberg-comparator-services.module';
 import { GutenbergFiltersComponent } from './gutenberg-filters/gutenberg-filters.component';
@@ -31,6 +32,7 @@ import { FilterStringsPipe } from './pipe/filter-strings.pipe';
     ReactiveFormsModule,
     NgbAccordionModule,
     NgbTypeaheadModule,
+    NgbTooltipModule,
     VirtualScrollerModule,
     ClipboardModule,
     GutenbergComparatorServicesModule,

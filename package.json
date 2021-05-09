@@ -1,6 +1,6 @@
 {
   "name": "polyglots-tools",
-  "version": "0.4.2-29",
+  "version": "0.4.3-30",
   "author": {
     "email": "allegretta92@hotmail.it",
     "name": "G. Allegretta"
@@ -38,6 +38,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.0",
+    "@angular/cdk": "^11.2.12",
     "@angular/common": "~11.2.0",
     "@angular/compiler": "~11.2.0",
     "@angular/core": "~11.2.0",
@@ -52,7 +53,6 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
-    "ngx-clipboard": "^14.0.1",
     "ngx-virtual-scroller": "^4.0.3",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",

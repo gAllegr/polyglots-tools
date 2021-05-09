@@ -34,6 +34,7 @@
     "RESULTS": {
       "COPY_FROM_CORE": "Copy string from Core",
       "COPY_FROM_PLUGIN": "Copy string from Gutenberg",
+      "COPY_SUCCESS_MESSAGE": "String copied successfully",
       "ORIGINAL_STRING": "Original string",
       "PLUGIN_STRING": "From plugin",
       "STATUS": {

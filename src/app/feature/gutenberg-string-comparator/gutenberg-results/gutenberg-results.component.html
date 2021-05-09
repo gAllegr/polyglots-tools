@@ -59,8 +59,16 @@
             </p>
             <button
               class="btn btn-outline-primary btn-sm"
-              ngxClipboard
-              [cbContent]="string.wpCore"
+              [cdkCopyToClipboard]="string.wpCore"
+              (cdkCopyToClipboardCopied)="tooltipCore.open()"
+              #tooltipCore="ngbTooltip"
+              [ngbTooltip]="
+                'GUTENBERG_STRING_COMPARATOR.RESULTS.COPY_SUCCESS_MESSAGE'
+                  | translate
+              "
+              placement="top"
+              triggers="manual"
+              (shown)="closeTooltipOnTimeout(tooltipCore)"
             >
               {{
                 'GUTENBERG_STRING_COMPARATOR.RESULTS.COPY_FROM_CORE' | translate
@@ -78,8 +86,16 @@
             </p>
             <button
               class="btn btn-outline-primary btn-sm"
-              ngxClipboard
-              [cbContent]="string.gutenberg"
+              [cdkCopyToClipboard]="string.gutenberg"
+              (cdkCopyToClipboardCopied)="tooltipPlugin.open()"
+              #tooltipPlugin="ngbTooltip"
+              [ngbTooltip]="
+                'GUTENBERG_STRING_COMPARATOR.RESULTS.COPY_SUCCESS_MESSAGE'
+                  | translate
+              "
+              placement="top"
+              triggers="manual"
+              (shown)="closeTooltipOnTimeout(tooltipPlugin)"
             >
               {{
                 'GUTENBERG_STRING_COMPARATOR.RESULTS.COPY_FROM_PLUGIN'

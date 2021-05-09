@@ -1,5 +1,16 @@
 [
   {
+    "version": "0.4.3",
+    "comments": [
+      {
+        "build": "30",
+        "date": "2021-05-09",
+        "type": "BUGFIX",
+        "text": "Show a toast when clicking on the copy button"
+      }
+    ]
+  },
+  {
     "version": "0.4.2",
     "comments": [
       {
